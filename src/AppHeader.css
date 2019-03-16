@@ -1,0 +1,20 @@
+.fancyButton {
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 auto;
+  color: #dcfbb4;
+  background-color: green;
+  border: 0.2em solid #d4f7da;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  height: 2em;
+  line-height: 1em;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0,0,0,0.1), inset 0 0 0 rgba(0,0,0,0.1);
+  text-align: center;
+}
+.fancyButton:hover {
+  box-shadow: 0 0 2em rgba(0,0,0,0.1), inset 0 0 1em rgba(0,0,0,0.1);
+  background-color: #29a074;
+}

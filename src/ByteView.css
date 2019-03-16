@@ -1,0 +1,31 @@
+.hexArea {
+  position: relative;
+  height: 95%;
+  padding: 3px;
+  white-space: pre;
+  text-overflow: clip;
+  overflow: auto;
+  border: 1px solid #0F0F0F;
+  color: #0F0F0F;
+  font-family: "Courier New", Courier, monospace
+}
+.bh {
+  title: "B-Tree page header";
+  background: lightskyblue;
+  border: 1px solid blue
+}
+.bca {
+  title: "B-Tree page cell array";
+  background: lightpink;
+  border: 1px solid red
+}
+.bfb {
+  title: "B-Tree page free block";
+  background: lightgreen;
+  border: 1px solid green
+}
+.bc {
+  title: "B-Tree page cell";
+  background: lightyellow;
+  border: 1px solid #501064
+}

@@ -1,0 +1,49 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  overflow: scroll;
+  font-family: Verdana, Geneva, sans-serif
+}
+ul {
+  margin: 3px;
+  padding-left: 20px
+}
+li {
+  cursor: pointer
+}
+a {
+  font-family: Arial Narrow, Arial, sans-serif;
+  text-decoration: none
+}
+.container {
+  height:100%;
+  position: relative
+}
+.watermark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 50%;
+  height: 30%;
+  margin: auto;
+  font-size: 24px;
+  font-family: Verdana, Geneva, sans-serif;
+  color: lavender;
+  text-align: center;
+  vertical-align: middle;
+  z-index: -1
+}
+@media screen and (min-width: 601px) {
+  .hdr {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hdr {
+    font-size: 25px;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './w3.css';
 import './AppFooter.css';
-import openPage from './AppFunctions.js';
+import { openPage } from './AppFunctions.js';
 
 class AppFooter extends Component {
   isNumberKey = (event) => {

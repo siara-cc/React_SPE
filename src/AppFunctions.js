@@ -186,7 +186,7 @@ export function readPage(pageNo, len) {
   return buffer;
 }
 
-export default function openPage(parentPageId, pageNo, typ, isRoot) {
+export function openPage(parentPageId, pageNo, typ, isRoot) {
   if (!myBinaryFileFD) {
     alert("File not open");
     return;
@@ -513,59 +513,60 @@ export function showOverflowPage(obj, evt, start) {
 export function showPage1(obj, evt) {
   showBTreePage(obj, evt, 100);
 }
-/*
-function selectFile() {
+
+export function fileSelected(fileNames) {
+  if (fileNames === undefined) {
+    alert("No file selected");
+  } else {
+    if (myBinaryFileFD !== 0) {
+        window.close(myBinaryFileFD, (err) => {
+          if (err) throw err;
+          myBinaryFileFD = 0;
+        });
+    }
+    $('#dbName').empty().append(fileNames[0]);
+    window.open(fileNames[0], 'r', (err, fd) => {
+      myBinaryFileFD = fd;
+      if (err) throw err;
+      var buffer = new Uint8Array(100);
+      var bytesRead = window.readSync(fd, buffer, 0, 100, 0);
+      if (buffer[0] !== 83 || buffer[1] !== 81 || buffer[2] !== 76 || buffer[3] !== 105
+             || buffer[4] !== 116 || buffer[5] !== 101 || buffer[6] !== 32 || buffer[7] !== 102
+             || buffer[8] !== 111 || buffer[9] !== 114 || buffer[10] !== 109 || buffer[11] !== 97
+             || buffer[12] !== 116 || buffer[13] !== 32 || buffer[14] !== 51 || buffer[15] !== 0) {
+          alert("Selected file is not SQLite database");
+          return;
+      }
+      $('#mainOutline').empty().append('<li onclick="showHeader(this)">Header</li>');
+      $('#detailArea').empty();
+      $('#hexArea1').empty();
+      $('#hexArea2').empty();
+      $('#hexArea3').empty();
+      pageSize = bytesToInt(buffer[16], buffer[17]);
+      if (pageSize === 1)
+          pageSize = 65536;
+      usableSize = pageSize - buffer[20];
+      maxLocal = Math.floor((usableSize - 12) * 64 / 255 - 23);
+      minLocal = Math.floor((usableSize - 12) * 32 / 255 - 23);
+      maxLeaf = Math.floor(usableSize - 35);
+      minLeaf = Math.floor((usableSize - 12) * 32 / 255 - 23);
+      buffer = new Uint8Array(pageSize);
+      bytesRead = window.readSync(fd, buffer, 0, pageSize, 0);
+      $('#mainOutline').append('<li id="r0" onclick="showPage1(this, event)">Root page<input type="hidden" value="1"/><ul></ul></li>');
+      var notification = new Notification('Database loaded', {
+        body: 'DB Loaded. Double click on Header or Pages to show details',
+        title: "Loaded"
+      });
+      $('.watermark').empty();
+    });
+  }
+}
+
+export function selectFile() {
   try {
-    dialog.showOpenDialog(function (fileNames) {
-        if (fileNames ==== undefined) {
-          alert("No file selected");
-        } else {
-          if (myBinaryFileFD != 0) {
-              fs.close(myBinaryFileFD, (err) => {
-                if (err) throw err;
-                myBinaryFileFD = 0;
-              });
-          }
-          $('#dbName').empty().append(fileNames[0]);
-          fs.open(fileNames[0], 'r', (err, fd) => {
-            myBinaryFileFD = fd;
-            if (err) throw err;
-            var buffer = new Uint8Array(100);
-            var bytesRead = fs.readSync(fd, buffer, 0, 100, 0);
-            if (buffer[0] != 83 || buffer[1] != 81 || buffer[2] != 76 || buffer[3] != 105
-                   || buffer[4] != 116 || buffer[5] != 101 || buffer[6] != 32 || buffer[7] != 102
-                   || buffer[8] != 111 || buffer[9] != 114 || buffer[10] != 109 || buffer[11] != 97
-                   || buffer[12] != 116 || buffer[13] != 32 || buffer[14] != 51 || buffer[15] != 0) {
-                alert("Selected file is not SQLite database");
-                return;
-            }
-            $('#mainOutline').empty().append('<li onclick="showHeader(this)">Header</li>');
-            $('#detailArea').empty();
-            $('#hexArea1').empty();
-            $('#hexArea2').empty();
-            $('#hexArea3').empty();
-            pageSize = bytesToInt(buffer[16], buffer[17]);
-            if (pageSize === 1)
-                pageSize = 65536;
-            usableSize = pageSize - buffer[20];
-            maxLocal = Math.floor((usableSize - 12) * 64 / 255 - 23);
-            minLocal = Math.floor((usableSize - 12) * 32 / 255 - 23);
-            maxLeaf = Math.floor(usableSize - 35);
-            minLeaf = Math.floor((usableSize - 12) * 32 / 255 - 23);
-            buffer = new Uint8Array(pageSize);
-            bytesRead = fs.readSync(fd, buffer, 0, pageSize, 0);
-            $('#mainOutline').append('<li id="r0" onclick="showPage1(this, event)">Root page<input type="hidden" value="1"/><ul></ul></li>');
-            var notification = new Notification('Database loaded', {
-              body: 'DB Loaded. Double click on Header or Pages to show details',
-              title: "Loaded"
-            });
-            $('.watermark').empty();
-          });
-        }
-    }); 
+    window.showOpenDialog(fileSelected);
   } catch (err) {
       alert(err);
       window.close();
   }
 }
-*/

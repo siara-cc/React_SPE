@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import cr_fs from 'cr_file_addon';
 
 var myBinaryFileFD = 0;
 var pageSize, usableSize, maxLocal, minLocal, maxLeaf, minLeaf;
@@ -564,7 +565,8 @@ export function fileSelected(fileNames) {
 
 export function selectFile() {
   try {
-    window.showOpenDialog(fileSelected);
+    cr_fs.selectFileForRead();
+    //window.showOpenDialog(fileSelected);
   } catch (err) {
       alert(err);
       window.close();

@@ -17,7 +17,7 @@ class AppFooter extends Component {
   render() {
     return (
       <div className="w3-row dbname" style={{width:'100%', padding: '5px', verticalAlign: 'center'}}>
-        <div className="w3-col m2 w3-container" style={{height:'100%'}}>
+        <div className="w3-col m4 w3-container" style={{height:'100%'}}>
           DB: <span id="dbName"><em>Not opened yet</em></span>
         </div>
         <div className="w3-col m3 w3-container" style={{height:'100%'}}>

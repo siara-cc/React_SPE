@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cr_file_addon": "file:../../Addons/File/npm_module",
     "jquery": "^3.3.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

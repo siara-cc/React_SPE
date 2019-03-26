@@ -13,7 +13,7 @@ class AppHeader extends Component {
             <img src="res/icons/db_search.png" alt="app logo" width="48px" height="48px"></img>
           </nobr>
         </div>
-        <div className="w3-col m3 w3-container hdr" 
+        <div className="w3-col m6 w3-container hdr" 
           style={{color: 'green', height:'100%', minWidth:'40%'}}>
           <b><nobr>Sqlite Page Explorer</nobr></b></div>
         <div className="w3-col m3 w3-container" 

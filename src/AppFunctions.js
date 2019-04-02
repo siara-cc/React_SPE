@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import cr_fs from 'cr_file_addon';
+import cr_fs from 'cr_addon_file';
+import cr_basic from 'cr_addon_basic';
 
 var myBinaryFileFD = 0;
 var pageSize, usableSize, maxLocal, minLocal, maxLeaf, minLeaf;
@@ -178,10 +179,9 @@ export function readPage(pageNo, len) {
     alert("File not open");
     return;
   }
-  var buffer = new Uint8Array(len);
-  var bytesRead = window.readSync(myBinaryFileFD, buffer, 0, len, (pageNo - 1) * pageSize);
-  if (bytesRead < len) {
-    alert("Unable to read page from file. Read " + bytesRead + " bytes.");
+  var buffer = cr_fs.read(myBinaryFileFD, 0, len, (pageNo - 1) * pageSize);
+  if (buffer.length < len) {
+    alert("Unable to read page from file. Read " + buffer.length + " bytes.");
     return null;
   }
   return buffer;
@@ -529,13 +529,12 @@ export function fileSelected(fileNames) {
     window.open(fileNames[0], 'r', (err, fd) => {
       myBinaryFileFD = fd;
       if (err) throw err;
-      var buffer = new Uint8Array(100);
-      var bytesRead = window.readSync(fd, buffer, 0, 100, 0);
+      var buffer = cr_fs.read(fd, 0, 100, 0);
       if (buffer[0] !== 83 || buffer[1] !== 81 || buffer[2] !== 76 || buffer[3] !== 105
              || buffer[4] !== 116 || buffer[5] !== 101 || buffer[6] !== 32 || buffer[7] !== 102
              || buffer[8] !== 111 || buffer[9] !== 114 || buffer[10] !== 109 || buffer[11] !== 97
              || buffer[12] !== 116 || buffer[13] !== 32 || buffer[14] !== 51 || buffer[15] !== 0) {
-          alert("Selected file is not SQLite database");
+          cr_basic.lingeringMessage("Selected file is not SQLite database");
           return;
       }
       $('#mainOutline').empty().append('<li onclick="showHeader(this)">Header</li>');
@@ -551,13 +550,9 @@ export function fileSelected(fileNames) {
       minLocal = Math.floor((usableSize - 12) * 32 / 255 - 23);
       maxLeaf = Math.floor(usableSize - 35);
       minLeaf = Math.floor((usableSize - 12) * 32 / 255 - 23);
-      buffer = new Uint8Array(pageSize);
-      bytesRead = window.readSync(fd, buffer, 0, pageSize, 0);
+      buffer = cr_fs.read(fd, 0, pageSize, 0);
       $('#mainOutline').append('<li id="r0" onclick="showPage1(this, event)">Root page<input type="hidden" value="1"/><ul></ul></li>');
-      var notification = new Notification('Database loaded', {
-        body: 'DB Loaded. Double click on Header or Pages to show details',
-        title: "Loaded"
-      });
+      cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
       $('.watermark').empty();
     });
   }
@@ -565,10 +560,10 @@ export function fileSelected(fileNames) {
 
 export function selectFile() {
   try {
-    cr_fs.selectFileForRead();
-    //window.showOpenDialog(fileSelected);
+    var dataFolder = cr_fs.getFolderPath("data");
+    cr_basic.lingeringMessage(dataFolder);
+    fileSelected(cr_fs.selectFileForRead(dataFolder));
   } catch (err) {
-      alert(err);
-      window.close();
+    cr_basic.lingeringMessage(err);
   }
 }

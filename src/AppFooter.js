@@ -11,7 +11,6 @@ class AppFooter extends Component {
   }
   handleClick = (event) => {
     event.preventDefault();
-    alert('hi');
     openPage('', event.target.parentElement.children[1].value, 'u', false);
   }
   render() {

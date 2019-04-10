@@ -235,39 +235,6 @@ export function showHeader(obj) {
   if (arr === null)
       return;
   showHex(arr, 100, 13);
-  var det = "";
-  det = "<b><u>File header</u></b><br><br>Header string: <b>SQLite format 3</b>";
-  det += "<br>Page Size: <b>" + pageSize + "</b>";
-  det += "<br>File format write version: <b>" + (arr[18] === 1 ? "Legacy" : "WAL") + "</b>";
-  det += "<br>File format read version: <b>" + (arr[19] === 1 ? "Legacy" : "WAL") + "</b>";
-  det += "<br>Bytes of unused reserved space at the end of each page: <b>" + arr[20] + "</b>";
-  det += "<br>Maximum embedded payload fraction. Must be 64: <b>" + arr[21] + "</b>";
-  det += "<br>Minimum embedded payload fraction. Must be 32: <b>" + arr[22] + "</b>";
-  det += "<br>Leaf payload fraction. Must be 32: <b>" + arr[23] + "</b>";
-  det += "<br>File change counter: <b>" + fourBytesToInt(arr, 24) + "</b>";
-  det += "<br>Size of the database file in pages: <b>" + fourBytesToInt(arr, 28) + "</b>";
-  var firstFLTrunk = fourBytesToInt(arr, 32);
-  var flCount = fourBytesToInt(arr, 36);
-  det += "<br>Page number of the first freelist trunk page: <b>" + firstFLTrunk + "</b>";
-  if (flCount > 0) {
-    det += "<input type=button value='Open' onclick='openPage(\"\", " + firstFLTrunk
-              + ", \"" + (flCount === 1 ? "fl" : "ft") + "\", false);'/>";
-  }
-  det += "<br>Total number of freelist pages: <b>" + flCount + "</b>";
-  det += "<br>The schema cookie: <b>" + fourBytesToInt(arr, 40) + "</b>";
-  det += "<br>The schema format number (Supported are 1, 2, 3, and 4): <b>" + fourBytesToInt(arr, 44) + "</b>";
-  det += "<br>Default page cache size: <b>" + fourBytesToInt(arr, 48) + "</b>";
-  det += "<br>Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): <b>" + fourBytesToInt(arr, 52) + "</b>";
-  var encoding = fourBytesToInt(arr, 56);
-  txtEncoding = (encoding === 2 ? "utf-16le" : (encoding === 3 ? "utf-16be" : "utf-8"));
-  det += "<br>The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): <b>" + txtEncoding + "</b>";
-  det += "<br>The 'user version' as read and set by the user_version pragma.: <b>" + fourBytesToInt(arr, 60) + "</b>";
-  det += "<br>Incremental-vacuum mode (0-true, 1-false): <b>" + fourBytesToInt(arr, 64) + "</b>";
-  det += "<br>The 'Application ID' set by PRAGMA application_id: <b>" + fourBytesToInt(arr, 68) + "</b>";
-  det += "<br>The version-valid-for number: <b>" + fourBytesToInt(arr, 92) + "</b>";
-  det += "<br>SQLITE_VERSION_NUMBER: <b>" + fourBytesToInt(arr, 96) + "</b>";
-  det += "<br><br>";
-  $('#detailArea').empty().append(det);
 }
 
 export function formColDataHtml(arr, cellPtr, pageId) {
@@ -444,51 +411,6 @@ export function showBTreePage(obj, evt, start) {
   evt.stopPropagation();
 }
 
-export function showFreeTrunkPage(obj, evt, start) {
-  var pageNo = parseInt(obj.children.item(0).value);
-  var arr = readPage(pageNo, pageSize);
-  if (arr === null)
-    return;
-  var nextTrunk = fourBytesToInt(arr, 0);
-  var leafCount = fourBytesToInt(arr, 4);
-  var det = "";
-  det += "<br>Next trunk page: <b>" + nextTrunk + "</b>";
-  if (nextTrunk > 0)
-    det += "<input type=button value='Open' onclick='openPage(\"\", " + nextTrunk + ", \"ft\", false);'/>";
-  det += "<br>Freelist leaf count: <b>" + leafCount + "</b>";
-  if (leafCount > 0) {
-    det += "<table cellspacing='1' cellpadding='1' border='1'>";
-    det += "<tr><td>Leaf page no.</td><td>Open</td></tr>";
-  }
-  for (var i = 0; i < leafCount; i++) {
-    var leafPageNo = fourBytesToInt(arr, 8 + i * 4);
-    det += "<tr><td>" + leafPageNo 
-             + "</td><td><input type=button value='Open' onclick='openPage(\"\", " 
-             + leafPageNo + ", \"fl\", false);'/></td></tr>";
-  }
-  if (leafCount > 0)
-    det += "</table>";
-  showHex(arr, start, 0);
-  $('#detailArea').empty().append(det);
-  evt.stopPropagation();
-}
-
-export function showFreeLeafPage(obj, evt, start) {
-  var pageNo = parseInt(obj.children.item(0).value);
-  var arr = readPage(pageNo, pageSize);
-  if (arr === null)
-    return;
-  showHex(arr, start, 0);
-  $('#detailArea').empty();
-  var ptype = arr[0];
-  if (ptype === 2 || ptype === 5 || ptype === 10 || ptype === 13) {
-    var detHtml = "<input type=button value='Show as B-Tree page' onclick='openPage(\"\", " 
-                    + pageNo + ", \"b\", false);'/>";
-    $('#detailArea').append(detHtml);
-  }
-  evt.stopPropagation();
-}
-
 export function showPage(obj, evt, start) {
   var pageNo = parseInt(obj.children.item(0).value);
   var arr = readPage(pageNo, pageSize);
@@ -500,70 +422,60 @@ export function showPage(obj, evt, start) {
   return arr;
 }
 
-export function showOverflowPage(obj, evt, start) {
-  var arr = showPage(obj, evt, start);
-  var nextPageNo = fourBytesToInt(arr, 0);
-  if (nextPageNo) {
-    $('#detailArea').append("<td><input type='button' value='Next Page " + nextPageNo + "' onclick='openPage(\"" + obj.id + "\"," 
-      + nextPageNo + ", \"o\", false)'/></td>");
-  } else {
-    $('#detailArea').append("Last overflow page");
-  }
-}
-
 export function showPage1(obj, evt) {
   showBTreePage(obj, evt, 100);
 }
 
-export function fileSelected(fileNames) {
-  if (fileNames === undefined) {
+export function fileSelected(fileName) {
+  if (fileName === undefined) {
     alert("No file selected");
   } else {
     if (myBinaryFileFD !== 0) {
-        window.close(myBinaryFileFD, (err) => {
-          if (err) throw err;
-          myBinaryFileFD = 0;
-        });
+        cr_fs.close(myBinaryFileFD);
+        myBinaryFileFD = 0;
     }
-    $('#dbName').empty().append(fileNames[0]);
-    window.open(fileNames[0], 'r', (err, fd) => {
-      myBinaryFileFD = fd;
-      if (err) throw err;
-      var buffer = cr_fs.read(fd, 0, 100, 0);
-      if (buffer[0] !== 83 || buffer[1] !== 81 || buffer[2] !== 76 || buffer[3] !== 105
-             || buffer[4] !== 116 || buffer[5] !== 101 || buffer[6] !== 32 || buffer[7] !== 102
-             || buffer[8] !== 111 || buffer[9] !== 114 || buffer[10] !== 109 || buffer[11] !== 97
-             || buffer[12] !== 116 || buffer[13] !== 32 || buffer[14] !== 51 || buffer[15] !== 0) {
-          cr_basic.lingeringMessage("Selected file is not SQLite database");
-          return;
-      }
-      $('#mainOutline').empty().append('<li onclick="showHeader(this)">Header</li>');
-      $('#detailArea').empty();
-      $('#hexArea1').empty();
-      $('#hexArea2').empty();
-      $('#hexArea3').empty();
-      pageSize = bytesToInt(buffer[16], buffer[17]);
-      if (pageSize === 1)
-          pageSize = 65536;
-      usableSize = pageSize - buffer[20];
-      maxLocal = Math.floor((usableSize - 12) * 64 / 255 - 23);
-      minLocal = Math.floor((usableSize - 12) * 32 / 255 - 23);
-      maxLeaf = Math.floor(usableSize - 35);
-      minLeaf = Math.floor((usableSize - 12) * 32 / 255 - 23);
-      buffer = cr_fs.read(fd, 0, pageSize, 0);
-      $('#mainOutline').append('<li id="r0" onclick="showPage1(this, event)">Root page<input type="hidden" value="1"/><ul></ul></li>');
-      cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
-      $('.watermark').empty();
-    });
+    $('#dbName').empty().append(fileName);
+    myBinaryFileFD = cr_fs.open(fileName, 'r');
+    var buffer = cr_fs.read(myBinaryFileFD, 0, 100, 0);
+    if (buffer[0] !== 83 || buffer[1] !== 81 || buffer[2] !== 76 || buffer[3] !== 105
+           || buffer[4] !== 116 || buffer[5] !== 101 || buffer[6] !== 32 || buffer[7] !== 102
+           || buffer[8] !== 111 || buffer[9] !== 114 || buffer[10] !== 109 || buffer[11] !== 97
+           || buffer[12] !== 116 || buffer[13] !== 32 || buffer[14] !== 51 || buffer[15] !== 0) {
+      cr_basic.lingeringMessage("Selected file is not SQLite database");
+      return;
+    }
+    $('#mainOutline').empty().append('<li onclick="showHeader(this)">Header</li>');
+    $('#detailArea').empty();
+    $('#hexArea1').empty();
+    $('#hexArea2').empty();
+    $('#hexArea3').empty();
+    pageSize = bytesToInt(buffer[16], buffer[17]);
+    if (pageSize === 1)
+      pageSize = 65536;
+    usableSize = pageSize - buffer[20];
+    maxLocal = Math.floor((usableSize - 12) * 64 / 255 - 23);
+    minLocal = Math.floor((usableSize - 12) * 32 / 255 - 23);
+    maxLeaf = Math.floor(usableSize - 35);
+    minLeaf = Math.floor((usableSize - 12) * 32 / 255 - 23);
+    buffer = cr_fs.read(myBinaryFileFD, 0, pageSize, 0);
+    $('#mainOutline').append('<li id="r0" onclick="showPage1(this, event)">Root page<input type="hidden" value="1"/><ul></ul></li>');
+    cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
+    $('.watermark').empty();
   }
 }
 
 export function selectFile() {
   try {
-    var dataFolder = cr_fs.getFolderPath("data");
-    cr_basic.lingeringMessage(dataFolder);
-    fileSelected(cr_fs.selectFileForRead(dataFolder));
+    var filesDir = cr_fs.getFolderPath("db");
+    cr_fs.selectFileForRead(filesDir).then(function(params) {
+      if (params["action"] === "selected")
+        fileSelected(params["selectedFile"])
+    });
   } catch (err) {
     cr_basic.lingeringMessage(err);
   }
+}
+
+export function showPageType(obj, evt, start) {
+  return null;
 }

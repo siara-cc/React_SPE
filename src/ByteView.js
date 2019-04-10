@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './w3.css';
 import './ByteView.css';
+import { showHex } from './AppFunctions';
 
 class ByteView extends Component {
   syncScroll = (event) => {
@@ -16,21 +17,33 @@ class ByteView extends Component {
           <div className="w3-col m3 w3-container container"
                  style={{minWidth:'37%', padding: '5px'}}>
             <div className="watermark">Hex view</div>
-            <div className="hexArea" id="hexArea1" onScroll={this.syncScroll}></div>
+            <div className="hexArea" id="hexArea1" onScroll={this.syncScroll}>
+              <BytesDisplay mode="hex"/>
+            </div>
           </div>
           <div className="w3-col m4 w3-container container"
                  style={{minWidth:'44%', padding: '5px'}}>
             <div className="watermark">Decimal view</div>
-            <div className="hexArea" id="hexArea2" onScroll={this.syncScroll}></div>
+            <div className="hexArea" id="hexArea2" onScroll={this.syncScroll}>
+              <BytesDisplay mode="dec"/>
+            </div>
           </div>
           <div className="w3-col m2 w3-container container"
                  style={{minWidth:'19%', padding: '5px'}}>
             <div className="watermark">Text view</div>
-            <div className="hexArea" id="hexArea3" onScroll={this.syncScroll}></div>
+            <div className="hexArea" id="hexArea3" onScroll={this.syncScroll}>
+              <BytesDisplay mode="txt"/>
+            </div>
           </div>
         </div>
       </div>
     );
+  }
+}
+
+class BytesDisplay extends Component {
+  render() {
+    return showHex(this.props.pageContent, 0, "h")
   }
 }
 

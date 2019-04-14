@@ -1,18 +1,59 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import AppHeader from './AppHeader';
 import Outline from './Outline';
 import ByteView from './ByteView';
 import AppFooter from './AppFooter';
 import './App.css';
 
-class App extends Component {
+class App extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = { pageCount: 0,
+      pageList: [],
+      dbInfo: {myBinaryFileFD: 0,
+        pageSize: 0, usableSize: 0, 
+        maxLocal: 0, minLocal: 0,
+        maxLeaf: 0, minLeaf: 0,
+        txtEncoding: "utf-8"
+      },
+      ptype: 0,
+      pageContent: []
+    };
+    this.setStateOnOpen = this.setStateOnOpen.bind(this)
+    this.setPageContent = this.setPageContent.bind(this)
+    this.addPage = this.addPage.bind(this)
+  }
+  setStateOnOpen(st) {
+    this.setState(st);
+  }
+  setPageContent(ptyp, pc) {
+    var newState = { pageCount: this.state.pageCount,
+      pageList: this.state.pageList,
+      dbInfo: this.state.dbInfo,
+      ptype: ptyp,
+      pageContent: pc
+    }
+    this.setState(newState);
+  }
+  addPage(idx, pageItem) {
+    var newList = this.state.pageList.slice(0);
+    newList.splice(idx, 0, pageItem);
+    var newState = { pageCount: this.state.pageCount + 1,
+      pageList: newList,
+      dbInfo: this.state.dbInfo,
+      ptype: this.state.ptype,
+      pageContent: this.state.pageContent
+    }
+    this.setState(newState);
+  }
   render() {
     return (
       <div style={{height:'100%'}}>
-        <AppHeader/>
-        <Outline/>
-        <ByteView/>
-        <AppFooter/>
+        <AppHeader parentState={this.state} setStateOnOpen={this.setStateOnOpen} />
+        <Outline parentState={this.state} setPageContent={this.setPageContent} 
+                  addPage={this.addPage}/>
+        <ByteView parentState={this.state} />
+        <AppFooter addPage={this.addPage} />
       </div>
     );
   }

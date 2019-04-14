@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { twoBytesToInt } from './AppFunctions'
 import { getVarInt } from './AppFunctions'
 import { hexFromByte } from './AppFunctions'
 import './w3.css';
 import './ByteView.css';
 
-class ByteView extends Component {
+class ByteView extends PureComponent {
   syncScroll = (event) => {
     var other1 = document.getElementById(event.target.id === "hexArea1" ? "hexArea2" : "hexArea1");
     var other2 = document.getElementById(event.target.id === "hexArea3" ? "hexArea2" : "hexArea3");
@@ -20,21 +20,27 @@ class ByteView extends Component {
                  style={{minWidth:'37%', padding: '5px'}}>
             <div className="watermark">Hex view</div>
             <div className="hexArea" id="hexArea1" onScroll={this.syncScroll}>
-              <BytesDisplay mode="hex"/>
+              <BytesDisplay pageContent={this.props.parentState.pageContent}
+                  start={this.props.parentState.pageStart}
+                  ptype={this.props.parentState.ptype} mode="hex"/>
             </div>
           </div>
           <div className="w3-col m4 w3-container container"
                  style={{minWidth:'44%', padding: '5px'}}>
             <div className="watermark">Decimal view</div>
             <div className="hexArea" id="hexArea2" onScroll={this.syncScroll}>
-              <BytesDisplay mode="dec"/>
+              <BytesDisplay pageContent={this.props.parentState.pageContent}
+                    start={this.props.parentState.pageStart}
+                    ptype={this.props.parentState.ptype} mode="dec"/>
             </div>
           </div>
           <div className="w3-col m2 w3-container container"
                  style={{minWidth:'19%', padding: '5px'}}>
             <div className="watermark">Text view</div>
             <div className="hexArea" id="hexArea3" onScroll={this.syncScroll}>
-              <BytesDisplay mode="txt"/>
+              <BytesDisplay pageContent={this.props.parentState.pageContent}
+                    start={this.props.parentState.pageStart}
+                    ptype={this.props.parentState.ptype} mode="txt"/>
             </div>
           </div>
         </div>
@@ -142,9 +148,9 @@ function getViewHTML(arr, start, ptype, mode) {
   return "<span>" + html + "</span>";
 }
 
-class BytesDisplay extends Component {
+class BytesDisplay extends PureComponent {
   render() {
-    return getViewHTML(this.props.pageContent, this.props.start, this.props.ptype, this.props.mode)
+    return ""; //getViewHTML(this.props.pageContent, this.props.start, this.props.ptype, this.props.mode)
   }
 }
 

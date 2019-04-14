@@ -20,7 +20,7 @@ class Outline extends Component {
             <div className="w3-col m2 w3-container container"
                    style={{minWidth:'35%', padding: '5px'}}>
               <div className="watermark">Page outline</div>
-              <PageList items={this.state.items} />
+              <PageList parentState={this.props.parentState} setPageContent={this.props.setPageContent} />
             </div>
             <div className="w3-col m2 w3-container container"
                    style={{minWidth:'65%', padding: '5px'}}>
@@ -35,15 +35,13 @@ class Outline extends Component {
 }
 
 class PageList extends React.Component {
-  updateState(obj, evt, typName) {
-  }
   render() {
     return (
       <ul className="outlineArea" id="mainOutline">
-        {this.props.items.map(item => (
-          <li id={item.pageId} onClick={(event) => { this.updateState(this, event, item.typName); }}>
-            {item.typName} {item.typDesc} {item.pageNo}
-            <input type="hidden" value={item.pageNo}/><ul></ul></li>
+        {this.props.parentState.pageList.map(pageItem => (
+          <li id={pageItem.pageId} onClick={(event) => { this.props.setPageContent(pageItem.item.typName); }}>
+            {pageItem.typName} {pageItem.typDesc} {pageItem.pageNo}
+            <input type="hidden" value={pageItem.pageNo}/><ul></ul></li>
         ))}
       </ul>
     );
@@ -62,6 +60,7 @@ class DetailArea extends Component {
       return <FreeLeafDetail />
     else if (this.props.typName === "Overflow")
       return <OverflowDetail />
+    return null;
   }
 }
 
@@ -312,7 +311,7 @@ class BTreeDetail extends Component {
           cellContent.push(<td><input type='button' value='Page {pageNo}' onclick='openPage(\"{pageId}\"," 
                     + pageNo}, \"o\", false)'/></td>)
         } else
-          cellContent += <td>-</td>
+          cellContent.push(<td>-</td>)
       }
       rowArray.push(<tr>{cellContent}</tr>)
     }

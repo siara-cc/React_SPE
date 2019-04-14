@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "cr_addon_basic": "file:../../Addons/Basic/npm_module",
     "cr_addon_file": "file:../../Addons/File/npm_module",
     "jquery": "^3.3.1",

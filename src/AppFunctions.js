@@ -2,10 +2,6 @@ import $ from 'jquery';
 import cr_fs from 'cr_addon_file';
 import cr_basic from 'cr_addon_basic';
 
-var myBinaryFileFD = 0;
-var pageSize, usableSize, maxLocal, minLocal, maxLeaf, minLeaf;
-var txtEncoding = "utf-8";
-
 export function fourBytesToInt(arr, pos) {
   return (arr[pos] << 24) + (arr[pos + 1] << 16) + (arr[pos + 2] << 8) + arr[pos + 3];
 }
@@ -73,7 +69,7 @@ export function toHexString(buf) {
   return s;
 }
 
-export function readPage(pageNo, len) {
+export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
   if (!myBinaryFileFD) {
     alert("File not open");
     return;
@@ -86,7 +82,7 @@ export function readPage(pageNo, len) {
   return buffer;
 }
 
-export function openPage(parentPageId, pageNo, typ, isRoot) {
+export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot) {
   if (!myBinaryFileFD) {
     alert("File not open");
     return;
@@ -136,7 +132,7 @@ export function showHeader(obj) {
   //showHex(arr, 100, 13);
 }
 
-export function showPage(obj, evt, start) {
+export function showPage(obj, evt, start, pageSize) {
   var pageNo = parseInt(obj.children.item(0).value);
   var arr = readPage(pageNo, pageSize);
   if (arr === null)
@@ -151,17 +147,19 @@ export function showPage1(obj, evt) {
   showPage(obj, evt, 100);
 }
 
-export function fileSelected(fileName) {
+export function fileSelected(fileName, state, setStateOnOpen) {
   if (fileName === undefined) {
     alert("No file selected");
   } else {
-    if (myBinaryFileFD !== 0) {
-        cr_fs.close(myBinaryFileFD);
-        myBinaryFileFD = 0;
+    if (state.dbInfo.myBinaryFileFD !== 0) {
+        cr_fs.close(state.dbInfo.myBinaryFileFD);
+        state.dbInfo.myBinaryFileFD = 0;
     }
+    var newState = {}
+    newState.dbInfo = {}
     $('#dbName').empty().append(fileName);
-    myBinaryFileFD = cr_fs.open(fileName, 'r');
-    var buffer = cr_fs.read(myBinaryFileFD, 0, 100, 0);
+    newState.dbInfo.myBinaryFileFD = cr_fs.open(fileName, 'r');
+    var buffer = cr_fs.read(newState.dbInfo.myBinaryFileFD, 0, 100, 0);
     if (buffer[0] !== 83 || buffer[1] !== 81 || buffer[2] !== 76 || buffer[3] !== 105
            || buffer[4] !== 116 || buffer[5] !== 101 || buffer[6] !== 32 || buffer[7] !== 102
            || buffer[8] !== 111 || buffer[9] !== 114 || buffer[10] !== 109 || buffer[11] !== 97
@@ -169,32 +167,35 @@ export function fileSelected(fileName) {
       cr_basic.lingeringMessage("Selected file is not SQLite database");
       return;
     }
-    $('#mainOutline').empty().append('<li onclick="showHeader(this)">Header</li>');
     $('#detailArea').empty();
     $('#hexArea1').empty();
     $('#hexArea2').empty();
     $('#hexArea3').empty();
-    pageSize = bytesToInt(buffer[16], buffer[17]);
-    if (pageSize === 1)
-      pageSize = 65536;
-    usableSize = pageSize - buffer[20];
-    maxLocal = Math.floor((usableSize - 12) * 64 / 255 - 23);
-    minLocal = Math.floor((usableSize - 12) * 32 / 255 - 23);
-    maxLeaf = Math.floor(usableSize - 35);
-    minLeaf = Math.floor((usableSize - 12) * 32 / 255 - 23);
-    buffer = cr_fs.read(myBinaryFileFD, 0, pageSize, 0);
-    $('#mainOutline').append('<li id="r0" onclick="showPage1(this, event)">Root page<input type="hidden" value="1"/><ul></ul></li>');
-    cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
     $('.watermark').empty();
+    newState.pageList = [];
+    newState.pageCount = 2;
+    newState.pageList[0] = { pageId: 'r0', typName: 'Header', typDesc: 'Header', pageNo: 1, start: 0, pageList: [] }
+    newState.dbInfo.pageSize = bytesToInt(buffer[16], buffer[17]);
+    if (newState.dbInfo.pageSize === 1)
+      newState.dbInfo.pageSize = 65536;
+    newState.dbInfo.usableSize = newState.dbInfo.pageSize - buffer[20];
+    newState.dbInfo.maxLocal = Math.floor((newState.dbInfo.usableSize - 12) * 64 / 255 - 23);
+    newState.dbInfo.minLocal = Math.floor((newState.dbInfo.usableSize - 12) * 32 / 255 - 23);
+    newState.dbInfo.maxLeaf = Math.floor(newState.dbInfo.usableSize - 35);
+    newState.dbInfo.minLeaf = Math.floor((newState.dbInfo.usableSize - 12) * 32 / 255 - 23);
+    buffer = cr_fs.read(newState.dbInfo.myBinaryFileFD, 0, newState.dbInfo.pageSize, 0);
+    newState.pageList[1] = { pageId: 'r1', typName: 'BTree', typDesc: 'Page 1', pageNo: 1, start: 100, pageList: [] }
+    cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
+    setStateOnOpen(newState);
   }
 }
 
-export function selectFile() {
+export function selectFile(state, setStateOnOpen) {
   try {
     var filesDir = cr_fs.getFolderPath("db");
     cr_fs.selectFileForRead(filesDir).then(function(params) {
       if (params["action"] === "selected")
-        fileSelected(params["selectedFile"])
+        fileSelected(params["selectedFile"], state, setStateOnOpen)
     });
   } catch (err) {
     cr_basic.lingeringMessage(err);

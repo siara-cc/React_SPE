@@ -18,7 +18,7 @@ class AppHeader extends Component {
           <b><nobr>Sqlite Page Explorer</nobr></b></div>
         <div className="w3-col m3 w3-container" 
           style={{textAlign: 'right', height:'100%', minWidth:'10%'}} >
-          <input type="button" className="fancyButton" onClick={(event) => { selectFile(); }} value="Open database"/>
+          <input type="button" className="fancyButton" onClick={(event) => { selectFile(this.props.parentState, this.props.setStateOnOpen); }} value="Open database"/>
         </div>
       </div>
     );

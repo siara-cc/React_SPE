@@ -125,28 +125,6 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot) {
   }
 }
 
-export function showHeader(obj) {
-  var arr = readPage(1, 100);
-  if (arr === null)
-      return;
-  //showHex(arr, 100, 13);
-}
-
-export function showPage(obj, evt, start, pageSize) {
-  var pageNo = parseInt(obj.children.item(0).value);
-  var arr = readPage(pageNo, pageSize);
-  if (arr === null)
-    return;
-  //showHex(arr, start, 0);
-  $('#detailArea').empty();
-  evt.stopPropagation();
-  return arr;
-}
-
-export function showPage1(obj, evt) {
-  showPage(obj, evt, 100);
-}
-
 export function fileSelected(fileName, state, setStateOnOpen) {
   if (fileName === undefined) {
     alert("No file selected");

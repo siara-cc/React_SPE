@@ -16,7 +16,8 @@ class App extends PureComponent {
         maxLeaf: 0, minLeaf: 0,
         txtEncoding: "utf-8"
       },
-      ptype: 0,
+      start: 0,
+      typName: "BTree",
       pageContent: []
     };
     this.setStateOnOpen = this.setStateOnOpen.bind(this)
@@ -26,12 +27,13 @@ class App extends PureComponent {
   setStateOnOpen(st) {
     this.setState(st);
   }
-  setPageContent(ptyp, pc) {
+  setPageContent(start, typName, pageBytes) {
     var newState = { pageCount: this.state.pageCount,
       pageList: this.state.pageList,
       dbInfo: this.state.dbInfo,
-      ptype: ptyp,
-      pageContent: pc
+      start: start,
+      typName: typName,
+      pageContent: pageBytes
     }
     this.setState(newState);
   }
@@ -41,7 +43,7 @@ class App extends PureComponent {
     var newState = { pageCount: this.state.pageCount + 1,
       pageList: newList,
       dbInfo: this.state.dbInfo,
-      ptype: this.state.ptype,
+      currentPage: this.state.currentPage,
       pageContent: this.state.pageContent
     }
     this.setState(newState);

@@ -13,8 +13,8 @@ class Outline extends Component {
   render() {
     return (
         <div className="w3-row outln">
-            <div className="w3-col m2 w3-container container"
-                   style={{minWidth:'35%', padding: '5px'}}>
+            <div className="w3-col m2 w3-container container outlineArea"
+                   id="mainOutline" style={{minWidth:'35%', padding: '5px'}}>
               <div className="watermark">Page outline</div>
               <PageList parentState={this.props.parentState} 
                 pageList={this.props.parentState.pageList} 
@@ -24,8 +24,7 @@ class Outline extends Component {
                    style={{minWidth:'65%', padding: '5px'}}>
               <div className="watermark">Page contents</div>
               <div className="detailArea" id="detailArea">
-                <DetailArea typName={this.props.typName} 
-                  parentState={this.props.parentState} />
+                <DetailArea parentState={this.props.parentState} />
               </div>
             </div>
         </div>
@@ -36,7 +35,7 @@ class Outline extends Component {
 class PageList extends React.Component {
   render() {
     return (
-      <ul className="outlineArea" id="mainOutline">
+      <ul>
         {this.props.pageList.map(pageItem => (
           <li id={pageItem.pageId} attrPageNo={pageItem.pageNo}
             attrStart={pageItem.start} attrTypName={pageItem.typName}
@@ -47,7 +46,6 @@ class PageList extends React.Component {
               this.props.setPageContent(event.target.getAttribute("attrStart"), 
                 event.target.getAttribute("attrTypName"), pc); }}>
               {pageItem.typName} {pageItem.typDesc} {pageItem.pageNo}
-              <input type="hidden" value={pageItem.pageNo}/>
               <PageList parentState={this.props.parentState} 
                 pageList={pageItem.pageList} 
                 setPageContent={this.props.setPageContent} />
@@ -60,23 +58,24 @@ class PageList extends React.Component {
 
 class DetailArea extends Component {
   render() {
-    if (this.props.typName === "Header")
+    if (this.props.parentState.typName === "Header")
       return <HeaderDetail parentState={this.props.parentState} />
-    else if (this.props.typName === "BTree")
+    else if (this.props.parentState.typName === "BTree")
       return <BTreeDetail parentState={this.props.parentState} />
-    else if (this.props.typName === "FreeTrunk")
+    else if (this.props.parentState.typName === "FreeTrunk")
       return <FreeTrunkDetail parentState={this.props.parentState} />
-    else if (this.props.typName === "FreeLeaf")
+    else if (this.props.parentState.parentState.typName === "FreeLeaf")
       return <FreeLeafDetail parentState={this.props.parentState} />
-    else if (this.props.typName === "Overflow")
+    else if (this.props.parentState.typName === "Overflow")
       return <OverflowDetail parentState={this.props.parentState} />
-    return null;
+    return <div>-</div>;
   }
 }
 
 class HeaderDetail extends Component {
   render() {
-    var pageContent = this.props.parentState.pageContent;
+    return <div>Hello World</div>
+/*    var pageContent = this.props.parentState.pageContent;
     var firstFLTrunk = fourBytesToInt(pageContent, 32);
     var flCount = fourBytesToInt(pageContent, 36);
     var encoding = fourBytesToInt(pageContent, 56);
@@ -110,7 +109,7 @@ class HeaderDetail extends Component {
       <br/>The 'Application ID' set by PRAGMA application_id: <b>{fourBytesToInt(pageContent, 68)}</b>
       <br/>The version-valid-for number: <b>{fourBytesToInt(pageContent, 92)}</b>
       <br/>SQLITE_VERSION_NUMBER: <b>{fourBytesToInt(pageContent, 96)}</b>
-      <br/><br/></div>)
+      <br/><br/></div>)*/
   }
 }
 
@@ -173,7 +172,7 @@ class BTreeDetail extends Component {
     super(props);
     this.formColDataHtml = this.formColDataHtml.bind(this);
   }
-  formColDataHtml(arr, cellPtr, pageId) {
+  formColDataHtml(arr, cellPtr, pageId, dbInfo) {
     var hdr = [];
     var det = [];
     var hdrInfo = getVarInt(arr, cellPtr);
@@ -220,7 +219,7 @@ class BTreeDetail extends Component {
           dataLen = Math.floor(dataLen);
           if (colInfo[0] % 2) {
             hdr.push(<td>text</td>);
-            var dec = new TextDecoder(this.props.dbInfo.txtEncoding);
+            var dec = new TextDecoder(dbInfo.txtEncoding);
             det.push(<td>{dec.decode(arr.slice(dataPtr, dataPtr + dataLen))}</td>)
           } else {
             hdr.push(<td>blob</td>)
@@ -240,9 +239,9 @@ class BTreeDetail extends Component {
     return [hdr, det];
   }
   render() {
-    var pageNo = this.props.pageNo;
-    var ptype, ptypestr;
+    var pageNo, ptype, ptypestr;
     var pageContent = this.props.parentState.pageContent;
+    var dbInfo = this.props.parentState.dbInfo;
     ptype = pageContent[this.props.start];
     ptypestr = (ptype === 2 ? "Interior index" : (ptype === 5 ? "Interior table" : (ptype === 10 ? "Leaf index" : ptype === 13 ? "Leaf table" : "Invalid")));
     var cellCount = twoBytesToInt(pageContent, this.props.start + 3);
@@ -293,13 +292,13 @@ class BTreeDetail extends Component {
         default:
       }
       if (ptype === 2 || ptype === 10 || ptype === 13) {
-        var X = (ptype === 13 ? this.props.dbInfo.maxLeaf : this.props.dbInfo.maxLocal);
+        var X = (ptype === 13 ? dbInfo.maxLeaf : dbInfo.maxLocal);
         var P = vInt[0];
         pageNo = 0;
         var oarr;
         if (P > X) {
-            var M = this.props.dbInfo.minLeaf;
-            var ovflwMaxPageBytes = (this.props.dbInfo.usableSize - 4);
+            var M = dbInfo.minLeaf;
+            var ovflwMaxPageBytes = (dbInfo.usableSize - 4);
             var K = M + (P - M) % ovflwMaxPageBytes;
             var surplus = P - (K > X ? M : K);
             var dataEnd = cellPtr + P - surplus;
@@ -310,7 +309,7 @@ class BTreeDetail extends Component {
             var oPageNo = pageNo;
             while (surplus > 0) {
               var toRead = (surplus > ovflwMaxPageBytes ? ovflwMaxPageBytes : surplus) + 4;
-              var obuf = readPage(oPageNo, toRead);
+              var obuf = readPage(dbInfo.myBinaryFileFD, dbInfo.pageSize, oPageNo, toRead);
               if (obuf != null) {
                 toRead -= 4;
                 for (var k1 = 0; k1 < toRead; k1++)
@@ -323,7 +322,7 @@ class BTreeDetail extends Component {
               surplus -= ovflwMaxPageBytes;
             }
         }
-        var hdrDtl = this.formColDataHtml((P > X ? oarr : pageContent), (P > X ? 0 : cellPtr), pageId);
+        var hdrDtl = this.formColDataHtml((P > X ? oarr : pageContent), (P > X ? 0 : cellPtr), pageId, dbInfo);
         hdr = hdrDtl[0];
         cellContent.push(hdrDtl[1]);
         if (pageNo) {

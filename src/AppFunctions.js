@@ -145,10 +145,10 @@ export function fileSelected(fileName, state, setStateOnOpen) {
       cr_basic.lingeringMessage("Selected file is not SQLite database");
       return;
     }
-    $('#detailArea').empty();
-    $('#hexArea1').empty();
-    $('#hexArea2').empty();
-    $('#hexArea3').empty();
+    //$('#detailArea').empty();
+    //$('#hexArea1').empty();
+    //$('#hexArea2').empty();
+    //$('#hexArea3').empty();
     $('.watermark').empty();
     newState.pageList = [];
     newState.pageCount = 2;

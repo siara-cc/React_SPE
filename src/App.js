@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import AppHeader from './AppHeader';
 import Outline from './Outline';
 import ByteView from './ByteView';
 import AppFooter from './AppFooter';
 import './App.css';
 
-class App extends PureComponent {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = { pageCount: 0,

@@ -42,8 +42,9 @@ class PageList extends React.Component {
             onClick={(event) => { 
               var pc = readPage(this.props.parentState.dbInfo.myBinaryFileFD,
                 this.props.parentState.dbInfo.pageSize,
-                event.target.getAttribute("attrPageNo"), this.props.parentState.dbInfo.pageSize);
-              this.props.setPageContent(event.target.getAttribute("attrStart"), 
+                parseInt(event.target.getAttribute("attrPageNo"), 10),
+                this.props.parentState.dbInfo.pageSize);
+              this.props.setPageContent(parseInt(event.target.getAttribute("attrStart"), 10),
                 event.target.getAttribute("attrTypName"), pc); }}>
               {pageItem.typName} {pageItem.typDesc} {pageItem.pageNo}
               <PageList parentState={this.props.parentState} 
@@ -64,7 +65,7 @@ class DetailArea extends Component {
       return <BTreeDetail parentState={this.props.parentState} />
     else if (this.props.parentState.typName === "FreeTrunk")
       return <FreeTrunkDetail parentState={this.props.parentState} />
-    else if (this.props.parentState.parentState.typName === "FreeLeaf")
+    else if (this.props.parentState.typName === "FreeLeaf")
       return <FreeLeafDetail parentState={this.props.parentState} />
     else if (this.props.parentState.typName === "Overflow")
       return <OverflowDetail parentState={this.props.parentState} />
@@ -74,8 +75,7 @@ class DetailArea extends Component {
 
 class HeaderDetail extends Component {
   render() {
-    return <div>Hello World</div>
-/*    var pageContent = this.props.parentState.pageContent;
+    var pageContent = this.props.parentState.pageContent;
     var firstFLTrunk = fourBytesToInt(pageContent, 32);
     var flCount = fourBytesToInt(pageContent, 36);
     var encoding = fourBytesToInt(pageContent, 56);
@@ -87,7 +87,7 @@ class HeaderDetail extends Component {
                }, \"{(flCount === 1 ? "fl" : "ft")}\", false);'/>
     }
     return (<div><b><u>File header</u></b><br/><br/>Header string: <b>SQLite format 3</b>
-      <br/>Page Size: <b>{this.props.pageSize} </b>
+      <br/>Page Size: <b>{this.props.parentState.dbInfo.pageSize}</b>
       <br/>File format write version: <b>{(pageContent[18] === 1 ? "Legacy" : "WAL")}</b>
       <br/>File format read version: <b>{(pageContent[19] === 1 ? "Legacy" : "WAL")}</b>
       <br/>Bytes of unused reserved space at the end of each page: <b>{pageContent[20]}</b>
@@ -109,7 +109,7 @@ class HeaderDetail extends Component {
       <br/>The 'Application ID' set by PRAGMA application_id: <b>{fourBytesToInt(pageContent, 68)}</b>
       <br/>The version-valid-for number: <b>{fourBytesToInt(pageContent, 92)}</b>
       <br/>SQLITE_VERSION_NUMBER: <b>{fourBytesToInt(pageContent, 96)}</b>
-      <br/><br/></div>)*/
+      <br/><br/></div>)
   }
 }
 
@@ -227,11 +227,12 @@ class BTreeDetail extends Component {
           }
           dataPtr += dataLen;
       }
+      /* TODO
       if (pageId.substr(0, 2) === 'r0' && colIdx === 3) {
         var pageNo = det.substring(det.lastIndexOf("<td>") + 4); // todo
         det.push(<input type='button' value='Open'
                   onclick='openPage(\"" + pageId + "\"," + pageNo + ", \"b\", true)'/>)
-      }
+      }*/
       i += colInfo[1];
       cellPtr += colInfo[1];
       colIdx++;
@@ -240,23 +241,24 @@ class BTreeDetail extends Component {
   }
   render() {
     var pageNo, ptype, ptypestr;
-    var pageContent = this.props.parentState.pageContent;
-    var dbInfo = this.props.parentState.dbInfo;
-    ptype = pageContent[this.props.start];
+    var parentState = this.props.parentState;
+    var pageContent = parentState.pageContent;
+    var dbInfo = parentState.dbInfo;
+    ptype = pageContent[parentState.start];
     ptypestr = (ptype === 2 ? "Interior index" : (ptype === 5 ? "Interior table" : (ptype === 10 ? "Leaf index" : ptype === 13 ? "Leaf table" : "Invalid")));
-    var cellCount = twoBytesToInt(pageContent, this.props.start + 3);
+    var cellCount = twoBytesToInt(pageContent, parentState.start + 3);
     var pageId = this.props.pageId;
     var hdrSize = 8;
     var rightPtrHTML = ""
     if (ptype === 2 || ptype === 5) {
-      var rightPtr = fourBytesToInt(pageContent, this.props.start + 8);
+      var rightPtr = fourBytesToInt(pageContent, parentState.start + 8);
       rightPtrHTML = <span><br/>Right most pointer: <b>{rightPtr}</b>&nbsp;<input type='button' value='Open' onclick='openPage(\"{pageId}\",{rightPtr}, \"b\", false)'/></span>
       hdrSize = 12;
     }
     var hdr = ""
     var rowArray = []
     for (var cell = 0; cell < cellCount; cell++) {
-      var cellPtr = twoBytesToInt(pageContent, cell * 2 + hdrSize + this.props.start);
+      var cellPtr = twoBytesToInt(pageContent, cell * 2 + hdrSize + parentState.start);
       var cellContent = []
       if (ptype === 2 || ptype === 5) {
         var pNo = fourBytesToInt(pageContent, cellPtr);
@@ -334,10 +336,10 @@ class BTreeDetail extends Component {
       rowArray.push(<tr>{cellContent}</tr>)
     }
     return (<div>Page type : <b>{ptypestr}</b> (2-interior index, 5-interior table, 10-leaf index, 13-leaf table)
-              <br/>First freeblock on the page: <b>{twoBytesToInt(pageContent, this.props.start + 1)}</b>
+              <br/>First freeblock on the page: <b>{twoBytesToInt(pageContent, parentState.start + 1)}</b>
               <br/>Number of cells on page: <b>{cellCount}</b>
-              <br/>Start of cell content area: <b>{twoBytesToInt(pageContent, this.props.start + 5)}</b>
-              <br/>Number of fragmented free bytes: <b>{pageContent[this.props.start + 7]}</b>
+              <br/>Start of cell content area: <b>{twoBytesToInt(pageContent, parentState.start + 5)}</b>
+              <br/>Number of fragmented free bytes: <b>{pageContent[parentState.start + 7]}</b>
               {rightPtrHTML}
               <br/><br/><b>Cells:</b><br/>
               <table cellspacing='1' cellpadding='1' border='1'>

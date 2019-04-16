@@ -71,18 +71,19 @@ export function toHexString(buf) {
 
 export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
   if (!myBinaryFileFD) {
-    alert("File not open");
+    cr_basic.lingeringMessage("File not open");
     return;
   }
   var buffer = cr_fs.read(myBinaryFileFD, 0, len, (pageNo - 1) * pageSize);
   if (buffer.length < len) {
-    alert("Unable to read page from file. Read " + buffer.length + " bytes.");
+    cr_basic.lingeringMessage("Unable to read page from file. Read " + buffer.length + " bytes.");
     return null;
   }
   return buffer;
 }
 
-export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot) {
+export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot, 
+                           parentState, updateState) {
   if (!myBinaryFileFD) {
     alert("File not open");
     return;
@@ -105,11 +106,12 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot) {
     if (parentPageId === '') {
       var pId = typ + pageNo;
       if (document.getElementById(pId) === null) {
+        var pageItem = { pageId: pId, typName: typName, typDesc: typDesc, pageNo: pageNo, start: 0, pageList: [] }
         $('#mainOutline').append('<li id="' + pId 
           + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName + ' ' + typDesc + ' ' + pageNo 
           + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
       } else
-        alert("Already open");
+        cr_basic.lingeringMessage("Already open");
     } else {
       var pageId = (isRoot ? "p" + parentPageId.substring(1) : parentPageId) + '_' + typ + pageNo;
       if (document.getElementById(pageId) === null) {
@@ -117,10 +119,10 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot) {
           + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName  + ' ' + typDesc + ' ' + pageNo 
           + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
       } else
-        alert("Already open");
+        cr_basic.lingeringMessage("Already open");
     }
   } catch (err) {
-      alert(err);
+    cr_basic.lingeringMessage(err);
       window.close();
   }
 }

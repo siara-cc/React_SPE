@@ -20,27 +20,21 @@ class ByteView extends PureComponent {
                  style={{minWidth:'37%', padding: '5px'}}>
             <div className="watermark">Hex view</div>
             <div className="hexArea" id="hexArea1" onScroll={this.syncScroll}>
-              <BytesDisplay pageContent={this.props.parentState.pageContent}
-                  start={this.props.parentState.pageStart}
-                  ptype={this.props.parentState.ptype} mode="hex"/>
+              <BytesDisplay parentState={this.props.parentState} mode="hex"/>
             </div>
           </div>
           <div className="w3-col m4 w3-container container"
                  style={{minWidth:'44%', padding: '5px'}}>
             <div className="watermark">Decimal view</div>
             <div className="hexArea" id="hexArea2" onScroll={this.syncScroll}>
-              <BytesDisplay pageContent={this.props.parentState.pageContent}
-                    start={this.props.parentState.pageStart}
-                    ptype={this.props.parentState.ptype} mode="dec"/>
+              <BytesDisplay parentState={this.props.parentState} mode="dec"/>
             </div>
           </div>
           <div className="w3-col m2 w3-container container"
                  style={{minWidth:'19%', padding: '5px'}}>
             <div className="watermark">Text view</div>
             <div className="hexArea" id="hexArea3" onScroll={this.syncScroll}>
-              <BytesDisplay pageContent={this.props.parentState.pageContent}
-                    start={this.props.parentState.pageStart}
-                    ptype={this.props.parentState.ptype} mode="txt"/>
+              <BytesDisplay parentState={this.props.parentState} mode="txt"/>
             </div>
           </div>
         </div>
@@ -92,7 +86,6 @@ function markDumpStart() {
   return "";
 }
 const spanend = "</span>";
-const brk = "<br>";
 function markDumpEnd() {
   if (pageInfo.ptype === 0)
     return "";
@@ -112,6 +105,24 @@ function markDumpEnd() {
   return "";
 }
 
+function getByteHTML(arr, i, mode) {
+  var html = "";
+  var d = arr[i];
+  if (mode === "hex")
+    html += hexFromByte(d) + " ";
+  else if (mode === "dec") {
+    html += (d > 99 ? "" : (d > 9 ? " " : "  "));
+    html += d;
+    html += " ";
+  } else if (mode === "txt") {
+    if (d >= 32 && d <= 126)
+        html += String.fromCharCode(d);
+    else
+        html += ".";
+  }
+  return html;
+}
+
 function getViewHTML(arr, start, ptype, mode) {
   pageInfo.uint8arr = arr;
   pageInfo.start = start; pageInfo.ptype = ptype;
@@ -122,35 +133,29 @@ function getViewHTML(arr, start, ptype, mode) {
   pageInfo.nxtFB = pageInfo.firstFreeBlockStart;
   pageInfo.firstFreeBlockStart = twoBytesToInt(arr, start + 1);
   var html = ""
+  var lineArray = []
   for (var i = 0; i < arr.length; i++) {
     if (i > 0 && i % 16 === 0) {
-      html += brk;
+      lineArray.push(html);
+      lineArray.push(<br/>)
+      html = ""
     }
-    pageInfo.curPos = i;
-    var st = markDumpStart();
-    html += st;
-    if (mode === "hex")
-      html += hexFromByte(arr[i]) + " ";
-    else if (mode === "dec") {
-      var d = arr[i];
-      html += (d > 99 ? "" : (d > 9 ? " " : "  "));
-      html += d;
-      html += " ";
-    } else if (mode === "txt") {
-      if (d >= 32 && d <= 126)
-          html += String.fromCharCode(d);
-      else
-          html += ".";
-    }
-    var end = markDumpEnd();
-    html += end;
+      //pageInfo.curPos = i;
+    //var st = markDumpStart();
+    //html += st;
+    html += getByteHTML(arr, i, mode);
+    //var end = markDumpEnd();
+    //html += end;
   }
-  return "<span>" + html + "</span>";
+  if (html != "")
+    lineArray.push(html);
+  return <span>{lineArray}</span>;
 }
 
 class BytesDisplay extends PureComponent {
   render() {
-    return ""; //getViewHTML(this.props.pageContent, this.props.start, this.props.ptype, this.props.mode)
+    var st = this.props.parentState;
+    return getViewHTML(st.pageContent, st.start, st.ptype, this.props.mode)
   }
 }
 

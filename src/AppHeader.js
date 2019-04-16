@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './w3.css';
 import './AppHeader.css';
 import { selectFile } from './AppFunctions.js';
 
-class AppHeader extends Component {
+class AppHeader extends PureComponent {
   render() {
     return (
       <div className="w3-row" style={{width:'100%', padding: '5px'}}>

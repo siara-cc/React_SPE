@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import AppHeader from './AppHeader';
 import Outline from './Outline';
 import ByteView from './ByteView';
 import AppFooter from './AppFooter';
 import './App.css';
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props)
     this.state = { pageCount: 0,
@@ -22,7 +22,7 @@ class App extends Component {
     };
     this.setStateOnOpen = this.setStateOnOpen.bind(this)
     this.setPageContent = this.setPageContent.bind(this)
-    this.addPage = this.addPage.bind(this)
+    this.updateState = this.updateState.bind(this)
   }
   setStateOnOpen(st) {
     this.setState(st);
@@ -37,15 +37,7 @@ class App extends Component {
     }
     this.setState(newState);
   }
-  addPage(idx, pageItem) {
-    var newList = this.state.pageList.slice(0);
-    newList.splice(idx, 0, pageItem);
-    var newState = { pageCount: this.state.pageCount + 1,
-      pageList: newList,
-      dbInfo: this.state.dbInfo,
-      currentPage: this.state.currentPage,
-      pageContent: this.state.pageContent
-    }
+  updateState(newState) {
     this.setState(newState);
   }
   render() {
@@ -53,9 +45,9 @@ class App extends Component {
       <div style={{height:'100%'}}>
         <AppHeader parentState={this.state} setStateOnOpen={this.setStateOnOpen} />
         <Outline parentState={this.state} setPageContent={this.setPageContent} 
-                  addPage={this.addPage}/>
+                  updateState={this.updateState}/>
         <ByteView parentState={this.state} />
-        <AppFooter addPage={this.addPage} />
+        <AppFooter updateState={this.updateState} />
       </div>
     );
   }

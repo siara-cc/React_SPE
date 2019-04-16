@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './w3.css';
 import './AppFooter.css';
 import { openPage } from './AppFunctions.js';
 
-class AppFooter extends Component {
+class AppFooter extends PureComponent {
   isNumberKey = (event) => {
     var charCode = (event.which) ? event.which : event.keyCode;
     if (charCode < 48 || charCode > 57)

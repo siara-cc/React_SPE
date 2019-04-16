@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './w3.css';
 import './Outline.css';
-import { readPage } from './AppFunctions.js';
+import { readPage, openPage } from './AppFunctions.js';
 import { getVarInt } from './AppFunctions.js';
 import { toHexString } from './AppFunctions.js';
 import { getIntValue } from './AppFunctions.js';
@@ -9,7 +9,7 @@ import { getFloatValue } from './AppFunctions.js';
 import { twoBytesToInt } from './AppFunctions.js';
 import { fourBytesToInt } from './AppFunctions.js';
 
-class Outline extends Component {
+class Outline extends PureComponent {
   render() {
     return (
         <div className="w3-row outln">
@@ -24,7 +24,8 @@ class Outline extends Component {
                    style={{minWidth:'65%', padding: '5px'}}>
               <div className="watermark">Page contents</div>
               <div className="detailArea" id="detailArea">
-                <DetailArea parentState={this.props.parentState} />
+                <DetailArea parentState={this.props.parentState}
+                  updateState={this.props.updateState} />
               </div>
             </div>
         </div>
@@ -32,7 +33,7 @@ class Outline extends Component {
   }
 }
 
-class PageList extends React.Component {
+class PageList extends React.PureComponent {
   render() {
     return (
       <ul>
@@ -57,23 +58,36 @@ class PageList extends React.Component {
   }
 }
 
-class DetailArea extends Component {
+class DetailArea extends PureComponent {
   render() {
     if (this.props.parentState.typName === "Header")
-      return <HeaderDetail parentState={this.props.parentState} />
+      return <HeaderDetail parentState={this.props.parentState} 
+               updateState={this.props.updateState}/>
     else if (this.props.parentState.typName === "BTree")
-      return <BTreeDetail parentState={this.props.parentState} />
+      return <BTreeDetail parentState={this.props.parentState} 
+               updateState={this.props.updateState} />
     else if (this.props.parentState.typName === "FreeTrunk")
-      return <FreeTrunkDetail parentState={this.props.parentState} />
+      return <FreeTrunkDetail parentState={this.props.parentState} 
+               updateState={this.props.updateState} />
     else if (this.props.parentState.typName === "FreeLeaf")
-      return <FreeLeafDetail parentState={this.props.parentState} />
+      return <FreeLeafDetail parentState={this.props.parentState} 
+               updateState={this.props.updateState} />
     else if (this.props.parentState.typName === "Overflow")
-      return <OverflowDetail parentState={this.props.parentState} />
+      return <OverflowDetail parentState={this.props.parentState} 
+               updateState={this.props.updateState} />
     return <div>-</div>;
   }
 }
 
-class HeaderDetail extends Component {
+class HeaderDetail extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.openFLPage = this.openFLPage.bind(this);
+  }
+  openFLPage(flPageNo, flType) {
+    openPage(this.props.parentState.dbInfo.myBinaryFileFD,
+      "", flPageNo, flType, false, this.props.parentState, this.props.updateState);
+  }
   render() {
     var pageContent = this.props.parentState.pageContent;
     var firstFLTrunk = fourBytesToInt(pageContent, 32);
@@ -83,8 +97,8 @@ class HeaderDetail extends Component {
     this.props.parentState.dbInfo.txtEncoding = txtEncoding;
     var button = ""
     if (flCount > 0) {
-      button = <input type="button" value="Open" onClick='openPage(\"\", {firstFLTrunk
-               }, \"{(flCount === 1 ? "fl" : "ft")}\", false);'/>
+      button = <input type="button" value="Open" 
+                 onClick={this.openFLPage.bind(this, firstFLTrunk, (flCount === 1 ? "fl" : "ft"))} />
     }
     return (<div><b><u>File header</u></b><br/><br/>Header string: <b>SQLite format 3</b>
       <br/>Page Size: <b>{this.props.parentState.dbInfo.pageSize}</b>
@@ -113,20 +127,29 @@ class HeaderDetail extends Component {
   }
 }
 
-class FreeTrunkDetail extends Component {
+class FreeTrunkDetail extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.openFreePage = this.openFreePage.bind(this);
+  }
+  openFreePage(flPageNo, flType) {
+    openPage(this.props.parentState.dbInfo.myBinaryFileFD,
+      "", flPageNo, flType, false, this.props.parentState, this.props.updateState);
+  }
   render() {
     var pageContent = this.props.parentState.pageContent;
     var nextTrunk = fourBytesToInt(pageContent, 0);
     var leafCount = fourBytesToInt(pageContent, 4);
     var button = ""
-    if (nextTrunk > 0)
-      button = <input type='button' value='Open' onclick='openPage(\"\", {nextTrunk}, \"ft\", false);'/>
+    if (nextTrunk > 0) {
+      button = <input type='button' value='Open' 
+                 onClick={this.openFreePage.bind(this, nextTrunk, "ft")} />
+    }
     var leafList = []
     for (var i = 0; i < leafCount; i++) {
       var leafPageNo = fourBytesToInt(pageContent, 8 + i * 4);
-      leafList.push(<tr><td>{leafPageNo}
-              </td><td><input type="button" value='Open' onclick='openPage(\"\", " 
-              + leafPageNo}, \"fl\", false);'/></td></tr>)
+      leafList.push(<tr><td>{leafPageNo}</td><td><input type="button" value='Open'
+                 onClick={this.openFreePage.bind(this, leafPageNo, "fl")} /></td></tr>)
     }
     var leafHTML = ""
     if (leafCount > 0) {
@@ -143,19 +166,27 @@ class FreeTrunkDetail extends Component {
   }
 }
 
-class FreeLeafDetail extends Component {
+class FreeLeafDetail extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.openBTPage = this.openBTPage.bind(this);
+  }
+  openBTPage(pageNo, type) {
+    openPage(this.props.parentState.dbInfo.myBinaryFileFD,
+      "", pageNo, type, false, this.props.parentState, this.props.updateState);
+  }
   render() {
     var pageContent = this.props.parentState.pageContent;
     var ptype = pageContent[0];
     if (ptype === 2 || ptype === 5 || ptype === 10 || ptype === 13) {
-      return (<input type="button" value='Show as B-Tree page' onclick='openPage(\"\", " 
-                    + pageNo}, \"b\", false);'/>)
+      return (<input type="button" value='Show as B-Tree page' 
+                onClick={this.openBTPage.bind(this, pageNo, "b")} />)
     }
     return ""
   }
 }
 
-class OverflowDetail extends Component {
+class OverflowDetail extends PureComponent {
   render() {
     var pageContent = this.props.parentState.pageContent;
     var nextPageNo = fourBytesToInt(pageContent, 0);
@@ -167,7 +198,7 @@ class OverflowDetail extends Component {
   }
 }
 
-class BTreeDetail extends Component {
+class BTreeDetail extends PureComponent {
   constructor(props) {
     super(props);
     this.formColDataHtml = this.formColDataHtml.bind(this);

@@ -17,7 +17,8 @@ class App extends PureComponent {
         txtEncoding: "utf-8"
       },
       start: 0,
-      typName: "BTree",
+      paggeId: '',
+      typName: "",
       pageContent: []
     };
     this.setStateOnOpen = this.setStateOnOpen.bind(this)
@@ -27,11 +28,12 @@ class App extends PureComponent {
   setStateOnOpen(st) {
     this.setState(st);
   }
-  setPageContent(start, typName, pageBytes) {
+  setPageContent(start, typName, pageBytes, pageId) {
     var newState = { pageCount: this.state.pageCount,
       pageList: this.state.pageList,
       dbInfo: this.state.dbInfo,
       start: start,
+      pageId: pageId,
       typName: typName,
       pageContent: pageBytes
     }

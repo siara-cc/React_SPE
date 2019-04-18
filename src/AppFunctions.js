@@ -107,9 +107,9 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
       var pId = typ + pageNo;
       if (document.getElementById(pId) === null) {
         var pageItem = { pageId: pId, typName: typName, typDesc: typDesc, pageNo: pageNo, start: 0, pageList: [] }
-        $('#mainOutline').append('<li id="' + pId 
-          + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName + ' ' + typDesc + ' ' + pageNo 
-          + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
+        //$('#mainOutline').append('<li id="' + pId 
+        //  + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName + ' ' + typDesc + ' ' + pageNo 
+        //  + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
       } else
         cr_basic.lingeringMessage("Already open");
     } else {
@@ -152,6 +152,9 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     //$('#hexArea2').empty();
     //$('#hexArea3').empty();
     $('.watermark').empty();
+    newState.pageId = "r0";
+    newState.typName = "Header";
+    newState.start = 0;
     newState.pageList = [];
     newState.pageCount = 2;
     newState.pageList[0] = { pageId: 'r0', typName: 'Header', typDesc: 'Header', pageNo: 1, start: 0, pageList: [] }

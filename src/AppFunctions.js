@@ -83,7 +83,7 @@ export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
 }
 
 export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot, 
-                           parentState, updateState) {
+                           parentState, addPageItem) {
   if (!myBinaryFileFD) {
     alert("File not open");
     return;
@@ -94,19 +94,21 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
   try {
     var typDesc = typName;
     if (typ === 'ft' || typ === 'fl' || typ === 'u')
-       typDesc = "Page";
+       typDesc = "Page " + pageNo;
     if (typ === 'b') {
-      var buffer = readPage(pageNo, 1);
+      var buffer = readPage(myBinaryFileFD, parentState.dbInfo.pageSize, pageNo, parentState.dbInfo.pageSize);
       if (buffer != null) {
         var ptype = buffer[0];
-        if (typ === 'b')
-          typDesc = (ptype === 2 ? "interior index" : (ptype === 5 ? "interior table" : (ptype === 10 ? "leaf index" : "leaf table")));
+        typDesc = (ptype === 2 ? "Interior index" : (ptype === 5 ? "Interior table" : (ptype === 10 ? "Leaf index" : "Leaf table")));
+        typDesc += (" " + pageNo);
       }
     }
     if (parentPageId === '') {
       var pId = typ + pageNo;
+      var pageItem = null;
       if (document.getElementById(pId) === null) {
-        var pageItem = { pageId: pId, typName: typName, typDesc: typDesc, pageNo: pageNo, start: 0, pageList: [] }
+        pageItem = { pageId: pId, typName: typName, typDesc: typDesc, pageNo: pageNo, start: 0, pageList: [] }
+        addPageItem(pageItem, "");
         //$('#mainOutline').append('<li id="' + pId 
         //  + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName + ' ' + typDesc + ' ' + pageNo 
         //  + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
@@ -115,15 +117,16 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
     } else {
       var pageId = (isRoot ? "p" + parentPageId.substring(1) : parentPageId) + '_' + typ + pageNo;
       if (document.getElementById(pageId) === null) {
-        $('#' + parentPageId).children("ul").append('<li id="' + pageId
-          + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName  + ' ' + typDesc + ' ' + pageNo 
-          + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
+        pageItem = { pageId: pageId, typName: typName, typDesc: typDesc, pageNo: pageNo, start: 0, pageList: [] }
+        addPageItem(pageItem, parentPageId);
+        //$('#' + parentPageId).children("ul").append('<li id="' + pageId
+        //  + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName  + ' ' + typDesc + ' ' + pageNo 
+        //  + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
       } else
         cr_basic.lingeringMessage("Already open");
     }
   } catch (err) {
     cr_basic.lingeringMessage(err);
-      window.close();
   }
 }
 
@@ -154,10 +157,11 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     $('.watermark').empty();
     newState.pageId = "r0";
     newState.typName = "Header";
+    newState.pageContent = buffer;
     newState.start = 0;
     newState.pageList = [];
     newState.pageCount = 2;
-    newState.pageList[0] = { pageId: 'r0', typName: 'Header', typDesc: 'Header', pageNo: 1, start: 0, pageList: [] }
+    newState.pageList[0] = { pageId: 'h0', typName: 'Header', typDesc: 'Header', pageNo: 1, start: 0, pageList: [] }
     newState.dbInfo.pageSize = bytesToInt(buffer[16], buffer[17]);
     if (newState.dbInfo.pageSize === 1)
       newState.dbInfo.pageSize = 65536;
@@ -167,7 +171,7 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     newState.dbInfo.maxLeaf = Math.floor(newState.dbInfo.usableSize - 35);
     newState.dbInfo.minLeaf = Math.floor((newState.dbInfo.usableSize - 12) * 32 / 255 - 23);
     buffer = cr_fs.read(newState.dbInfo.myBinaryFileFD, 0, newState.dbInfo.pageSize, 0);
-    newState.pageList[1] = { pageId: 'r1', typName: 'BTree', typDesc: 'Page 1', pageNo: 1, start: 100, pageList: [] }
+    newState.pageList[1] = { pageId: 'r0', typName: 'BTree', typDesc: 'Page 1', pageNo: 1, start: 100, pageList: [] }
     cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
     setStateOnOpen(newState);
   }

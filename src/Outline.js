@@ -25,7 +25,7 @@ class Outline extends PureComponent {
               <div className="watermark">Page contents</div>
               <div className="detailArea" id="detailArea">
                 <DetailArea parentState={this.props.parentState}
-                  updateState={this.props.updateState} />
+                  addPageItem={this.props.addPageItem} />
               </div>
             </div>
         </div>
@@ -47,7 +47,7 @@ class PageList extends React.PureComponent {
                 this.props.parentState.dbInfo.pageSize);
               this.props.setPageContent(parseInt(event.target.getAttribute("attrStart"), 10),
                 event.target.getAttribute("attrTypName"), 
-                event.target.getAttribute("id"), pc); }}>
+                event.target.id, pc); }}>
               {pageItem.typName} {pageItem.typDesc} {pageItem.pageNo}
               <PageList parentState={this.props.parentState} 
                 pageList={pageItem.pageList} 
@@ -63,20 +63,20 @@ class DetailArea extends PureComponent {
   render() {
     if (this.props.parentState.typName === "Header")
       return <HeaderDetail parentState={this.props.parentState} 
-               updateState={this.props.updateState}/>
+               addPageItem={this.props.addPageItem}/>
     else if (this.props.parentState.typName === "BTree")
       return <BTreeDetail parentState={this.props.parentState} 
-               updateState={this.props.updateState} />
-    else if (this.props.parentState.typName === "FreeTrunk")
+               addPageItem={this.props.addPageItem}/>
+      else if (this.props.parentState.typName === "FreeTrunk")
       return <FreeTrunkDetail parentState={this.props.parentState} 
-               updateState={this.props.updateState} />
-    else if (this.props.parentState.typName === "FreeLeaf")
+               addPageItem={this.props.addPageItem}/>
+      else if (this.props.parentState.typName === "FreeLeaf")
       return <FreeLeafDetail parentState={this.props.parentState} 
-               updateState={this.props.updateState} />
-    else if (this.props.parentState.typName === "Overflow")
+               addPageItem={this.props.addPageItem}/>
+      else if (this.props.parentState.typName === "Overflow")
       return <OverflowDetail parentState={this.props.parentState} 
-               updateState={this.props.updateState} />
-    return <div>-</div>;
+               addPageItem={this.props.addPageItem}/>
+      return <div>-</div>;
   }
 }
 
@@ -87,7 +87,7 @@ class HeaderDetail extends PureComponent {
   }
   openFLPage(flPageNo, flType) {
     openPage(this.props.parentState.dbInfo.myBinaryFileFD,
-      "", flPageNo, flType, false, this.props.parentState, this.props.updateState);
+      "", flPageNo, flType, false, this.props.parentState, this.props.addPageItem);
   }
   render() {
     var pageContent = this.props.parentState.pageContent;
@@ -135,7 +135,7 @@ class FreeTrunkDetail extends PureComponent {
   }
   openFreePage(flPageNo, flType) {
     openPage(this.props.parentState.dbInfo.myBinaryFileFD,
-      "", flPageNo, flType, false, this.props.parentState, this.props.updateState);
+      "", flPageNo, flType, false, this.props.parentState, this.props.addPageItem);
   }
   render() {
     var pageContent = this.props.parentState.pageContent;
@@ -174,7 +174,7 @@ class FreeLeafDetail extends PureComponent {
   }
   openBTPage(pageNo, type) {
     openPage(this.props.parentState.dbInfo.myBinaryFileFD,
-      "", pageNo, type, false, this.props.parentState, this.props.updateState);
+      "", pageNo, type, false, this.props.parentState, this.props.addPageItem);
   }
   render() {
     var pageContent = this.props.parentState.pageContent;
@@ -195,7 +195,7 @@ class OverflowDetail extends PureComponent {
   }
   openOFPage(pageNo, type) {
     openPage(this.props.parentState.dbInfo.myBinaryFileFD,
-      "", pageNo, type, false, this.props.parentState, this.props.updateState);
+      "", pageNo, type, false, this.props.parentState, this.props.addPageItem);
   }
   render() {
     var pageContent = this.props.parentState.pageContent;
@@ -216,7 +216,7 @@ class BTreeDetail extends PureComponent {
   }
   openBTPage(pageNo, type, parentPageId) {
     openPage(this.props.parentState.dbInfo.myBinaryFileFD,
-      parentPageId, pageNo, type, false, this.props.parentState, this.props.updateState);
+      parentPageId, pageNo, type, false, this.props.parentState, this.props.addPageItem);
   }
   formColDataHtml(arr, cellPtr, pageId, dbInfo) {
     var hdr = [];

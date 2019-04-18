@@ -147,7 +147,7 @@ function getViewHTML(arr, start, ptype, mode) {
     //var end = markDumpEnd();
     //html += end;
   }
-  if (html != "")
+  if (html !== "")
     lineArray.push(html);
   return <span>{lineArray}</span>;
 }

@@ -17,7 +17,7 @@ class App extends PureComponent {
         txtEncoding: "utf-8"
       },
       start: 0,
-      paggeId: '',
+      pageId: '',
       typName: "",
       pageContent: []
     };

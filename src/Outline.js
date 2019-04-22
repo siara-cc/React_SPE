@@ -101,7 +101,8 @@ class HeaderDetail extends PureComponent {
       button = <input type="button" value="Open" 
                  onClick={this.openFLPage.bind(this, firstFLTrunk, (flCount === 1 ? "fl" : "ft"))} />
     }
-    return (<div><b><u>File header</u></b><br/><br/>Header string: <b>SQLite format 3</b>
+    return (<div>
+      <br/><b><u>File header</u></b><br/><br/>Header string: <b>SQLite format 3</b>
       <br/>Page Size: <b>{this.props.parentState.dbInfo.pageSize}</b>
       <br/>File format write version: <b>{(pageContent[18] === 1 ? "Legacy" : "WAL")}</b>
       <br/>File format read version: <b>{(pageContent[19] === 1 ? "Legacy" : "WAL")}</b>

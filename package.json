@@ -7,6 +7,7 @@
     "@babel/polyfill": "^7.4.3",
     "cr_addon_basic": "file:../../Addons/Basic/npm_module",
     "cr_addon_file": "file:../../Addons/File/npm_module",
+    "cr_addon_resources": "file:../../Addons/Resources/npm_module",
     "jquery": "^3.3.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

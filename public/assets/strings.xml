@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SQLite Page Explorer</string>
+    <string name="Open db">Open database</string>
+
+    <string name="db">DB: </string>
+    <string name="not_opened">Not opened yet</string>
+    <string name="page">Page: </string>
+    <string name="open">Open</string>
+    <string name="ref">Ref</string>
+    <string name="license">License</string>
+    <string name="privacy">Privacy</string>
+
+</resources>

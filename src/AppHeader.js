@@ -16,7 +16,7 @@ class AppHeader extends PureComponent {
         </div>
         <div className="w3-col m6 w3-container hdr" 
           style={{color: 'green', height:'100%', minWidth:'40%'}}>
-          <b><nobr>cr_res.getString("app_name")</nobr></b></div>
+          <b><nobr>{cr_res.getString("app_name")}</nobr></b></div>
         <div className="w3-col m3 w3-container" 
           style={{textAlign: 'right', height:'100%', minWidth:'10%'}} >
           <input type="button" className="fancyButton"

@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Header -->
+    <string name="app_name">سكليتي الصفحة اكسبلورر</string>
+    <string name="open_db">فتح قاعدة البيانات</string>
+
+    <!-- Functions -->
+    <string name="file_not_open">الملف غير مفتوح</string>
+    <string name="already">مفتوحة بالفعل</string>
+    <string name="read_unable">غير قادر على قراءة الصفحة بالكامل من الملف.</string>
+    <string name="int_idx">Interior index</string>
+    <string name="int_tbl">Interior table</string>
+    <string name="leaf_idx">Leaf index</string>
+    <string name="leaf_tbl">Leaf table</string>
+    <string name="no_file">لم يتم اختيار اي ملف.</string>
+    <string name="not_sqlite_db">الملف المحدد ليس قاعدة بيانات SQLite.</string>
+    <string name="db_loaded">ديسيبل محملة. انقر مرتين على رأس أو صفحات لإظهار التفاصيل</string>
+
+    <!-- Outline -->
+    <string name="page_outline">صفحة الخطوط العريضة</string>
+    <string name="page_contents"> صفحةمحتويات الصفحة</string>
+    <string name="file_header">رأس الملف</string>
+    <string name="header_str">معرف الملف: </string>
+    <string name="sqlite_f3">SQLite Format 3</string>
+    <string name="page_size">مقاس الصفحه: </string>
+    <string name="ff_write_ver">تنسيق ملف الكتابة الإصدار: </string>
+    <string name="ff_read_ver">تنسيق ملف قراءة الإصدار: </string>
+    <string name="unused_res_space">بايت من المساحة المحجوزة غير المستخدمة في نهاية كل صفحة: </string>
+    <string name="max_pl_frac">أقصى جزء من الحمولة النافعة المضمنة. يجب أن يكون 64: </string>
+    <string name="min_pl_frac">الحد الأدنى جزءا لا يتجزأ من الحمولة. يجب أن يكون 32: </string>
+    <string name="leaf_pl_frac">صفحة ورق الأوراق. يجب أن يكون 32: </string>
+    <string name="file_chg_ctr">ملف تغيير العداد:</string>
+    <string name="db_size_pages">حجم ملف قاعدة البيانات في الصفحات: </string>
+    <string name="page_no_fflt">رقم الصفحة من أول صفحة جذع المستقل: </string>
+    <string name="fl_count">إجمالي عدد الصفحات المستقلة: </string>
+    <string name="sch_cookie">ملف تعريف الارتباط المخطط:  </string>
+    <string name="sch_fmt_num">رقم تنسيق المخطط (المدعوم 1 و 2 و 3 و 4): </string>
+    <string name="dflt_pg_cache_sz">حجم ذاكرة التخزين المؤقت للصفحة الافتراضية: </string>
+    <string name="lgst_bt_pg_no">أكبر رقم للصفحة الرئيسية لشجرة الجذر b (في الفراغ التلقائي أو الفراغ الإضافي ، عدا 0):</string>
+    <string name="db_txt_enc">ترميز نص قاعدة البيانات (1-UTF-8 ، 2-UTF-16le ، 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">"إصدار المستخدم" كما تمت قراءته وتعيينه بواسطة user_version "pragma": </string>
+    <string name="inc_vac_mode">وضع الفراغ التزايدي (0 صحيح ، كذبة 1): </string>
+    <string name="app_id_pgma">"معرف التطبيق" المعين من قبل PRAGMA application_id: </string>
+    <string name="vv_for_num">رقم الإصدار صالح لل: </string>
+    <string name="sqlite_ver_num">رقم إصدار SQLite: </string>
+
+    <string name="leaf_pg_no">ورقة نبات رقم الصفحة: </string>
+    <string name="next_trnk_pg">صفحة جذع التالي: </string>
+    <string name="fl_leaf_count">حر قائمة نبات عد عدد: </string>
+
+    <string name="page_type">نوع الصفحة: </string>
+    <string name="first_fb">أول كتلة مجانية في الصفحة: </string>
+    <string name="num_cells">عدد الخلايا في الصفحة: </string>
+    <string name="cntnt_area_start">بداية منطقة محتوى الخلية: </string>
+    <string name="frag_free_count">عدد البايتات الحرة المجزأة: </string>
+    <string name="ptype_desc">(مؤشران داخليان ، طاولة ذات 5 أقسام ، مؤشر مكون من 10 أوراق ، جدول مكون من 13 ورقة)</string>
+    <string name="cells">الخلايا: </string>
+    <string name="row_id">معرف الصف</string>
+    <string name="len">الطول</string>
+    <string name="ovfl">فائض</string>
+
+    <string name="show_as_bt_pg">عرض كصفحة B-Tree</string>
+    <string name="nxt_pg">الصفحة التالية</string>
+    <string name="invalid">غير صالحة</string>
+    <string name="right_most_ptr">مؤشر أقصى اليمين: </string>
+
+    <!-- Footer -->
+    <string name="db">DB: </string>
+    <string name="not_opened">لم يفتح بعد</string>
+    <string name="page">الصفحة: </string>
+    <string name="open">افتح</string>
+    <string name="ref">المرجع</string>
+    <string name="license">رخصة</string>
+    <string name="privacy">خصوصية بوليصة</string>
+
+</resources>

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Header -->
-    <string name="app_name">Sqlite Page Explorer</string>
+    <string name="app_name">Sqlite صفحه اکسپلورر</string>
     <string name="open_db">Open database</string>
 
     <!-- Functions -->

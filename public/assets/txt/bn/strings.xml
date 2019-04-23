@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Header -->
+    <string name="app_name">Sqlite পৃষ্ঠা এক্সপ্লোরার</string>
+    <string name="open_db">ডাটাবেস খুলুন</string>
+
+    <!-- Functions -->
+    <string name="file_not_open">ফাইল খোলা না</string>
+    <string name="already">ইতিমধ্যে খোলা</string>
+    <string name="read_unable">সম্পূর্ণরূপে ফাইল থেকে পৃষ্ঠা পড়তে অক্ষম.</string>
+    <string name="int_idx">অভ্যন্তরীণ সূচক</string>
+    <string name="int_tbl">অভ্যন্তরীণ টেবিল</string>
+    <string name="leaf_idx">গাছের পাতা সূচক</string>
+    <string name="leaf_tbl">গাছের পাতা টেবিল</string>
+    <string name="no_file">নির্বাচিত কোন ফাইল.</string>
+    <string name="not_sqlite_db">নির্বাচিত ফাইল একটি SQLite ডাটাবেস নয়.</string>
+    <string name="db_loaded">ডিবি লোড করা আছে । বিস্তারিত প্রদর্শন করতে হেডার বা পেজগুলিতে ডাবল ক্লিক করুন</string>
+
+    <!-- Outline -->
+    <string name="page_outline">পৃষ্ঠা রূপরেখা</string>
+    <string name="page_contents">পৃষ্ঠা বিষয়বস্তু</string>
+    <string name="file_header">ফাইল হেডার</string>
+    <string name="header_str">হেডার স্ট্রিং: </string>
+    <string name="sqlite_f3">SQLite Format 3</string>
+    <string name="page_size">পৃষ্ঠা আকার: </string>
+    <string name="ff_write_ver">ফাইল বিন্যাস লিখুন সংস্করণ: </string>
+    <string name="ff_read_ver">ফাইল বিন্যাস সংস্করণ পড়ুন: </string>
+    <string name="unused_res_space">প্রতিটি পৃষ্ঠার শেষে অব্যবহৃত সংরক্ষিত স্থান বাইট: </string>
+    <string name="max_pl_frac">সর্বাধিক এমবেডেড পেলোড ভগ্নাংশ। 64 হতে হবে: </string>
+    <string name="min_pl_frac">নূন্যতম এমবেডেড পেলোড ভগ্নাংশ। অবশ্যই হতে হবে 32: </string>
+    <string name="leaf_pl_frac">লিফ পেডलोड ভগ্নাংশ। অবশ্যই হতে হবে 32: </string>
+    <string name="file_chg_ctr">ফাইল পরিবর্তন পাল্টা: </string>
+    <string name="db_size_pages">ডাটাবেস ফাইলের আকার (পৃষ্ঠাগুলির সংখ্যা): </string>
+    <string name="page_no_fflt">প্রথম ফ্রিলিস্ট ট্রাঙ্ক পৃষ্ঠাটির পৃষ্ঠা নম্বর: </string>
+    <string name="fl_count">ফ্রিলিস্ট পৃষ্ঠাগুলির মোট সংখ্যা: </string>
+    <string name="sch_cookie">স্কিমা কুকি: </string>
+    <string name="sch_fmt_num">স্কিমা বিন্যাস নম্বর (সমর্থিত 1, 2, 3, এবং 4): </string>
+    <string name="dflt_pg_cache_sz">ডিফল্ট পৃষ্ঠা ক্যাশে আকার: </string>
+    <string name="lgst_bt_pg_no">বৃহত্তম রুট বি-ট্রি পৃষ্ঠা নম্বর। (স্বয়ংক্রিয়-ভ্যাকুয়াম বা ক্রমবর্ধমান-ভ্যাকুয়াম মোডে, অথবা 0): </string>
+    <string name="db_txt_enc">ডাটাবেস টেক্সট এনকোডিং (1-UTF-8, 2-UTF-16LE, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">User_version pragma দ্বারা পড়া এবং সেট হিসাবে 'ব্যবহারকারী সংস্করণ': </string>
+    <string name="inc_vac_mode">ক্রমোন্নতি-ভ্যাকুয়াম মোড (0-সত্য, 1-মিথ্যা): </string>
+    <string name="app_id_pgma">PRAGMA অ্যাপ্লিকেশন_আইড দ্বারা সেট করা 'অ্যাপ্লিকেশন আইডি': </string>
+    <string name="vv_for_num">সংস্করণ-বৈধ-সংখ্যার জন্য: </string>
+    <string name="sqlite_ver_num">SQLite সংস্করণ সংখ্যা:  </string>
+
+    <string name="leaf_pg_no">Leaf এর পাতা সংখ্যা: </string>
+    <string name="next_trnk_pg">পরবর্তী ট্রাঙ্ক পৃষ্ঠা: </string>
+    <string name="fl_leaf_count">ফ্রিলিস্ট লিফ কাউন্ট: </string>
+
+    <string name="page_type">পৃষ্ঠা টাইপ: </string>
+    <string name="first_fb">প্রথম বিনামূল্যে ব্লক পাতা: </string>
+    <string name="num_cells">পৃষ্ঠা কোষ গণনা: </string>
+    <string name="cntnt_area_start">সেল বিষয়বস্তু এলাকা শুরু করুন: </string>
+    <string name="frag_free_count">'বিভাজিত' বিনামূল্যে বাইট সংখ্যা: </string>
+    <string name="ptype_desc">(2-অভ্যন্তরীণ সূচক, 5-অভ্যন্তরীণ টেবিল, 10-পাতা সূচক, 13-পাতা টেবিল)</string>
+    <string name="cells">সেল: </string>
+    <string name="row_id">সারি আইডি</string>
+    <string name="len">লম্বা</string>
+    <string name="ovfl">উপচাইয়া ত্তঠা</string>
+
+    <string name="show_as_bt_pg">'বি-ট্রি' পৃষ্ঠা হিসাবে দেখান</string>
+    <string name="nxt_pg">পরবর্তী পৃষ্ঠা</string>
+    <string name="invalid">অকার্যকর</string>
+    <string name="right_most_ptr">ডান দিকের পয়েন্টার: </string>
+
+    <!-- Footer -->
+    <string name="db">DB: </string>
+    <string name="not_opened">এখনো খোলা নেই</string>
+    <string name="page">পৃষ্ঠা: </string>
+    <string name="open">খোলা</string>
+    <string name="ref">উল্লেখ</string>
+    <string name="license">লাইসেন্স</string>
+    <string name="privacy">গোপনীয়তা</string>
+
+</resources>

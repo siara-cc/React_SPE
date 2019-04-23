@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import cr_fs from 'cr_addon_file';
 import cr_basic from 'cr_addon_basic';
+import cr_res from 'cr_addon_resources';
 
 export function fourBytesToInt(arr, pos) {
   return (arr[pos] << 24) + (arr[pos + 1] << 16) + (arr[pos + 2] << 8) + arr[pos + 3];
@@ -71,12 +72,12 @@ export function toHexString(buf) {
 
 export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
   if (!myBinaryFileFD) {
-    cr_basic.lingeringMessage("File not open");
+    cr_basic.lingeringMessage(cr_res.getString("file_not_open"));
     return;
   }
   var buffer = cr_fs.read(myBinaryFileFD, 0, len, (pageNo - 1) * pageSize);
   if (buffer.length < len) {
-    cr_basic.lingeringMessage("Unable to read page from file. Read " + buffer.length + " bytes.");
+    cr_basic.lingeringMessage(cr_res.getString("read_unable"));
     return null;
   }
   return buffer;
@@ -85,7 +86,7 @@ export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
 export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot, 
                            parentState, addPageItem) {
   if (!myBinaryFileFD) {
-    alert("File not open");
+    cr_basic.lingeringMessage(cr_res.getString("file_not_open"));
     return;
   }
   var typName = (typ === 'b' ? "BTree" : (typ === 'l' ? "LockByte" 
@@ -94,12 +95,25 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
   try {
     var typDesc = typName;
     if (typ === 'ft' || typ === 'fl' || typ === 'u')
-       typDesc = "Page " + pageNo;
+       typDesc = cr_res.getString("page") + pageNo;
     if (typ === 'b') {
       var buffer = readPage(myBinaryFileFD, parentState.dbInfo.pageSize, pageNo, parentState.dbInfo.pageSize);
       if (buffer != null) {
         var ptype = buffer[0];
-        typDesc = (ptype === 2 ? "Interior index" : (ptype === 5 ? "Interior table" : (ptype === 10 ? "Leaf index" : "Leaf table")));
+        switch (ptype) {
+          case 2:
+            typDesc = cr_res.getString("int_idx");
+            break;
+         case 5:
+            typDesc = cr_res.getString("int_tbl");
+            break;
+         case 10:
+            typDesc = cr_res.getString("leaf_idx");
+            break;
+         default:
+            typDesc = cr_res.getString("leaf_tbl");
+            break;
+        }
         typDesc += (" " + pageNo);
       }
     }
@@ -113,7 +127,7 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
         //  + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName + ' ' + typDesc + ' ' + pageNo 
         //  + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
       } else
-        cr_basic.lingeringMessage("Already open");
+        cr_basic.lingeringMessage(cr_res.getString("already"));
     } else {
       var pageId = (isRoot ? "p" + parentPageId.substring(1) : parentPageId) + '_' + typ + pageNo;
       if (document.getElementById(pageId) === null) {
@@ -123,7 +137,7 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
         //  + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName  + ' ' + typDesc + ' ' + pageNo 
         //  + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
       } else
-        cr_basic.lingeringMessage("Already open");
+        cr_basic.lingeringMessage(cr_res.getString("already"));
     }
   } catch (err) {
     cr_basic.lingeringMessage(err);
@@ -132,7 +146,7 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
 
 export function fileSelected(fileName, state, setStateOnOpen) {
   if (fileName === undefined) {
-    alert("No file selected");
+    cr_basic.lingeringMessage(cr_res.getString("no_file"));
   } else {
     if (state.dbInfo.myBinaryFileFD !== 0) {
         cr_fs.close(state.dbInfo.myBinaryFileFD);
@@ -147,7 +161,7 @@ export function fileSelected(fileName, state, setStateOnOpen) {
            || buffer[4] !== 116 || buffer[5] !== 101 || buffer[6] !== 32 || buffer[7] !== 102
            || buffer[8] !== 111 || buffer[9] !== 114 || buffer[10] !== 109 || buffer[11] !== 97
            || buffer[12] !== 116 || buffer[13] !== 32 || buffer[14] !== 51 || buffer[15] !== 0) {
-      cr_basic.lingeringMessage("Selected file is not SQLite database");
+      cr_basic.lingeringMessage(cr_res.getString("not_sqlite_db"));
       return;
     }
     //$('#detailArea').empty();
@@ -172,7 +186,7 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     newState.dbInfo.minLeaf = Math.floor((newState.dbInfo.usableSize - 12) * 32 / 255 - 23);
     buffer = cr_fs.read(newState.dbInfo.myBinaryFileFD, 0, newState.dbInfo.pageSize, 0);
     newState.pageList[1] = { pageId: 'r0', typName: 'BTree', typDesc: 'Page 1', pageNo: 1, start: 100, pageList: [] }
-    cr_basic.lingeringMessage("DB Loaded. Double click on Header or Pages to show details");
+    cr_basic.lingeringMessage(cr_res.getString("db_loaded"));
     setStateOnOpen(newState);
   }
 }

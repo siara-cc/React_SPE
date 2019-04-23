@@ -8,6 +8,7 @@ import { getIntValue } from './AppFunctions.js';
 import { getFloatValue } from './AppFunctions.js';
 import { twoBytesToInt } from './AppFunctions.js';
 import { fourBytesToInt } from './AppFunctions.js';
+import cr_res from 'cr_addon_resources';
 
 class Outline extends PureComponent {
   render() {
@@ -15,14 +16,14 @@ class Outline extends PureComponent {
         <div className="w3-row outln">
             <div className="w3-col m2 w3-container container outlineArea"
                    id="mainOutline" style={{minWidth:'35%', padding: '5px'}}>
-              <div className="watermark">Page outline</div>
+              <div className="watermark">{cr_res.getString("page_outline")}</div>
               <PageList parentState={this.props.parentState} 
                 pageList={this.props.parentState.pageList} 
                 setPageContent={this.props.setPageContent} />
             </div>
             <div className="w3-col m2 w3-container container"
                    style={{minWidth:'65%', padding: '5px'}}>
-              <div className="watermark">Page contents</div>
+              <div className="watermark">{cr_res.getString("page_contents")}</div>
               <div className="detailArea" id="detailArea">
                 <DetailArea parentState={this.props.parentState}
                   addPageItem={this.props.addPageItem} />
@@ -98,33 +99,34 @@ class HeaderDetail extends PureComponent {
     this.props.parentState.dbInfo.txtEncoding = txtEncoding;
     var button = ""
     if (flCount > 0) {
-      button = <input type="button" value="Open" 
+      button = <input type="button" value={cr_res.getString("Open")}
                  onClick={this.openFLPage.bind(this, firstFLTrunk, (flCount === 1 ? "fl" : "ft"))} />
     }
     return (<div>
-      <br/><b><u>File header</u></b><br/><br/>Header string: <b>SQLite format 3</b>
-      <br/>Page Size: <b>{this.props.parentState.dbInfo.pageSize}</b>
-      <br/>File format write version: <b>{(pageContent[18] === 1 ? "Legacy" : "WAL")}</b>
-      <br/>File format read version: <b>{(pageContent[19] === 1 ? "Legacy" : "WAL")}</b>
-      <br/>Bytes of unused reserved space at the end of each page: <b>{pageContent[20]}</b>
-      <br/>Maximum embedded payload fraction. Must be 64: <b>{pageContent[21]}</b>
-      <br/>Minimum embedded payload fraction. Must be 32: <b>{pageContent[22]}</b>
-      <br/>Leaf payload fraction. Must be 32: <b>{pageContent[23]}</b>
-      <br/>File change counter: <b>{fourBytesToInt(pageContent, 24)}</b>
-      <br/>Size of the database file in pages: <b>{fourBytesToInt(pageContent, 28)}</b>
-      <br/>Page number of the first freelist trunk page: <b>{firstFLTrunk}</b>
+      <br/><b><u>{cr_res.getString("file_header")}</u></b><br/>
+      <br/>{cr_res.getString("header_str")}<b>{cr_res.getString("sqlite_f3")}</b>
+      <br/>{cr_res.getString("page_size")}<b>{this.props.parentState.dbInfo.pageSize}</b>
+      <br/>{cr_res.getString("ff_write_ver")}<b>{(pageContent[18] === 1 ? "Legacy" : "WAL")}</b>
+      <br/>{cr_res.getString("ff_read_ver")}<b>{(pageContent[19] === 1 ? "Legacy" : "WAL")}</b>
+      <br/>{cr_res.getString("unused_res_space")}<b>{pageContent[20]}</b>
+      <br/>{cr_res.getString("max_pl_frac")}<b>{pageContent[21]}</b>
+      <br/>{cr_res.getString("min_pl_frac")}<b>{pageContent[22]}</b>
+      <br/>{cr_res.getString("leaf_pl_frac")}<b>{pageContent[23]}</b>
+      <br/>{cr_res.getString("file_chg_ctr")}<b>{fourBytesToInt(pageContent, 24)}</b>
+      <br/>{cr_res.getString("db_size_pages")}<b>{fourBytesToInt(pageContent, 28)}</b>
+      <br/>{cr_res.getString("page_no_fflt")}<b>{firstFLTrunk}</b>
       {button}
-      <br/>Total number of freelist pages: <b>{flCount}</b>
-      <br/>The schema cookie: <b>{fourBytesToInt(pageContent, 40)}</b>
-      <br/>The schema format number (Supported are 1, 2, 3, and 4): <b>{fourBytesToInt(pageContent, 44)}</b>
-      <br/>Default page cache size: <b>{fourBytesToInt(pageContent, 48)}</b>
-      <br/>Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): <b>{fourBytesToInt(pageContent, 52)}</b>
-      <br/>The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): <b>{txtEncoding}</b>
-      <br/>The 'user version' as read and set by the user_version pragma.: <b>{fourBytesToInt(pageContent, 60)}</b>
-      <br/>Incremental-vacuum mode (0-true, 1-false): <b>{fourBytesToInt(pageContent, 64)}</b>
-      <br/>The 'Application ID' set by PRAGMA application_id: <b>{fourBytesToInt(pageContent, 68)}</b>
-      <br/>The version-valid-for number: <b>{fourBytesToInt(pageContent, 92)}</b>
-      <br/>SQLITE_VERSION_NUMBER: <b>{fourBytesToInt(pageContent, 96)}</b>
+      <br/>{cr_res.getString("fl_count")}<b>{flCount}</b>
+      <br/>{cr_res.getString("sch_cookie")}<b>{fourBytesToInt(pageContent, 40)}</b>
+      <br/>{cr_res.getString("sch_fmt_num")}<b>{fourBytesToInt(pageContent, 44)}</b>
+      <br/>{cr_res.getString("dflt_pg_cache_sz")}<b>{fourBytesToInt(pageContent, 48)}</b>
+      <br/>{cr_res.getString("lgst_bt_pg_no")}<b>{fourBytesToInt(pageContent, 52)}</b>
+      <br/>{cr_res.getString("db_txt_enc")}<b>{txtEncoding}</b>
+      <br/>{cr_res.getString("usr_ver_pgma")}<b>{fourBytesToInt(pageContent, 60)}</b>
+      <br/>{cr_res.getString("inc_vac_mode")}<b>{fourBytesToInt(pageContent, 64)}</b>
+      <br/>{cr_res.getString("app_id_pgma")}<b>{fourBytesToInt(pageContent, 68)}</b>
+      <br/>{cr_res.getString("vv_for_num")}<b>{fourBytesToInt(pageContent, 92)}</b>
+      <br/>{cr_res.getString("sqlite_ver_num")}<b>{fourBytesToInt(pageContent, 96)}</b>
       <br/><br/></div>)
   }
 }
@@ -144,24 +146,26 @@ class FreeTrunkDetail extends PureComponent {
     var leafCount = fourBytesToInt(pageContent, 4);
     var button = ""
     if (nextTrunk > 0) {
-      button = <input type='button' value='Open' 
+      button = <input type='button' value={cr_res.getString("open")} 
                  onClick={this.openFreePage.bind(this, nextTrunk, "ft")} />
     }
     var leafList = []
     for (var i = 0; i < leafCount; i++) {
       var leafPageNo = fourBytesToInt(pageContent, 8 + i * 4);
-      leafList.push(<tr><td>{leafPageNo}</td><td><input type="button" value='Open'
+      leafList.push(<tr><td>{leafPageNo}</td><td><input type="button"
+                 value={cr_res.getString("open")}
                  onClick={this.openFreePage.bind(this, leafPageNo, "fl")} /></td></tr>)
     }
     var leafHTML = ""
     if (leafCount > 0) {
       leafHTML = (<table cellspacing='1' cellpadding='1' border='1'>
-                   <tr><td>Leaf page no.</td><td>Open</td></tr>
+                   <tr><td>{cr_res.getString("leaf_pg_no")}</td>
+                   <td>{cr_res.getString("open")}</td></tr>
                    {leafList}
                    </table>)
     }
-    return (<div><br/><span>Next trunk page: </span><b>{nextTrunk}</b>
-              <br/>Freelist leaf count: <b>{leafCount}</b>
+    return (<div><br/><span>{cr_res.getString("next_trnk_pg")}</span><b>{nextTrunk}</b>
+              <br/>{cr_res.getString("fl_leaf_count")}<b>{leafCount}</b>
               {button}
               {leafHTML}
             </div>)
@@ -182,7 +186,7 @@ class FreeLeafDetail extends PureComponent {
     var ptype = pageContent[0];
     if (ptype === 2 || ptype === 5 || ptype === 10 || ptype === 13) {
       var pageNo = 0; // TODO
-      return (<input type="button" value='Show as B-Tree page' 
+      return (<input type="button" value={cr_res.getString("show_as_bt_pg")} 
                 onClick={this.openBTPage.bind(this, pageNo, "b")} />)
     }
     return ""
@@ -202,7 +206,7 @@ class OverflowDetail extends PureComponent {
     var pageContent = this.props.parentState.pageContent;
     var nextPageNo = fourBytesToInt(pageContent, 0);
     if (nextPageNo) {
-      return (<td><input type='button' value={"Next Page (" + nextPageNo + ")"}
+      return (<td><input type='button' value={cr_res.getString("nxt_pg") + " (" + nextPageNo + ")"}
                 onClick={this.openOFPage.bind(this, nextPageNo, "o")} /></td>)
     }
     return "Last overflow page"
@@ -276,7 +280,7 @@ class BTreeDetail extends PureComponent {
           dataPtr += dataLen;
       }
       if (pageId.substr(0, 2) === 'r0' && colIdx === 3) {
-        det.push(<td>{colValue} <input type="button" value='Open' 
+        det.push(<td>{colValue} <input type="button" value={cr_res.getString("open")}
                   onClick={this.openBTPage.bind(this, colValue, "b", "r0")} /></td>)
       } else
         det.push(<td>{colValue}</td>)
@@ -292,14 +296,31 @@ class BTreeDetail extends PureComponent {
     var pageContent = parentState.pageContent;
     var dbInfo = parentState.dbInfo;
     ptype = pageContent[parentState.start];
-    ptypestr = (ptype === 2 ? "Interior index" : (ptype === 5 ? "Interior table" : (ptype === 10 ? "Leaf index" : ptype === 13 ? "Leaf table" : "Invalid")));
+    switch (ptype) {
+      case 2:
+        ptypestr = cr_res.getString("int_idx");
+        break;
+     case 5:
+        ptypestr = cr_res.getString("int_tbl");
+        break;
+     case 10:
+        ptypestr = cr_res.getString("leaf_idx");
+        break;
+     case 13:
+        ptypestr = cr_res.getString("leaf_tbl");
+        break;
+     default:
+        ptypestr = cr_res.getString("invalid");
+        break;
+    }
     var cellCount = twoBytesToInt(pageContent, parentState.start + 3);
     var pageId = parentState.pageId;
     var hdrSize = 8;
     var rightPtrHTML = ""
     if (ptype === 2 || ptype === 5) {
       var rightPtr = fourBytesToInt(pageContent, parentState.start + 8);
-      rightPtrHTML = <span><br/>Right most pointer: <b>{rightPtr}</b>&nbsp;<input type='button' value='Open' onclick='openPage(\"{pageId}\",{rightPtr}, \"b\", false)'/></span>
+      rightPtrHTML = <span><br/>{cr_res.getString("right_most_ptr")}<b>{rightPtr}</b>
+      <input type='button' value={cr_res.getString("open")} onclick='openPage(\"{pageId}\",{rightPtr}, \"b\", false)'/></span>
       hdrSize = 12;
     }
     var hdr = ""
@@ -309,7 +330,7 @@ class BTreeDetail extends PureComponent {
       var cellContent = []
       if (ptype === 2 || ptype === 5) {
         var pNo = fourBytesToInt(pageContent, cellPtr);
-        cellContent.push(<td><input type="button" value={"Page " + pNo} 
+        cellContent.push(<td><input type="button" value={cr_res.getString("page") + pNo} 
           onClick={this.openBTPage.bind(this, pNo, "b", pageId)} /></td>)
         cellPtr += 4;
       }
@@ -375,22 +396,25 @@ class BTreeDetail extends PureComponent {
         hdr = hdrDtl[0];
         cellContent.push(hdrDtl[1]);
         if (pageNo) {
-          cellContent.push(<td><input type="button" value={"Page " + pageNo} 
+          cellContent.push(<td><input type="button" value={cr_res.getString("page") + pageNo} 
                              onClick={this.openBTPage.bind(this, pageNo, "o", pageId)} /></td>)
         } else
           cellContent.push(<td>-</td>)
       }
       rowArray.push(<tr>{cellContent}</tr>)
     }
-    return (<div>Page type : <b>{ptypestr}</b> (2-interior index, 5-interior table, 10-leaf index, 13-leaf table)
-              <br/>First freeblock on the page: <b>{twoBytesToInt(pageContent, parentState.start + 1)}</b>
-              <br/>Number of cells on page: <b>{cellCount}</b>
-              <br/>Start of cell content area: <b>{twoBytesToInt(pageContent, parentState.start + 5)}</b>
-              <br/>Number of fragmented free bytes: <b>{pageContent[parentState.start + 7]}</b>
+    return (<div>{cr_res.getString("page_type")}<b>{ptypestr}</b> {cr_res.getString("ptype_desc")}
+              <br/>{cr_res.getString("first_fb")}<b>{twoBytesToInt(pageContent, parentState.start + 1)}</b>
+              <br/>{cr_res.getString("num_cells")}<b>{cellCount}</b>
+              <br/>{cr_res.getString("cntnt_area_start")}<b>{twoBytesToInt(pageContent, parentState.start + 5)}</b>
+              <br/>{cr_res.getString("frag_free_count")}<b>{pageContent[parentState.start + 7]}</b>
               {rightPtrHTML}
-              <br/><br/><b>Cells:</b><br/>
+              <br/><br/><b>{cr_res.getString("cells")}</b><br/>
               <table cellspacing='1' cellpadding='1' border='1'>
-              <thead><td>Page</td><td>Row ID</td><td>Len</td>{hdr}<td>Overflow</td></thead>
+              <thead><td>{cr_res.getString("page")}</td>
+              <td>{cr_res.getString("row_id")}</td>
+              <td>{cr_res.getString("len")}</td>
+              {hdr}<td>{cr_res.getString("ovfl")}</td></thead>
               {rowArray}
               </table></div>)
   }

@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">ਡਾਟਾਬੇਸ ਖੋਲ੍ਹੋ</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">ਫਾਇਲ ਨਾ ਖੁੱਲ੍ਹੀ ਹੈ</string>
+    <string name="already">ਪਹਿਲਾਂ ਹੀ ਖੋਲ੍ਹੋ</string>
+    <string name="read_unable">ਫਾਈਲ ਤੋਂ ਪੇਜ ਪੂਰੀ ਤਰਾਂ ਪੜ੍ਹਨ ਵਿੱਚ ਅਸਮਰੱਥ.</string>
+    <string name="int_idx">ਅੰਦਰੂਨੀ ਸੂਚਕਾਂਕ</string>
+    <string name="int_tbl">ਅੰਦਰੂਨੀ ਟੇਬਲ</string>
+    <string name="leaf_idx">ਲੀਫ ਇੰਡੈਕਸ</string>
+    <string name="leaf_tbl">ਲੀਫ ਟੇਬਲ</string>
+    <string name="no_file">ਕੋਈ ਫਾਇਲ ਨਹੀਂ ਚੁਣੀ.</string>
+    <string name="not_sqlite_db">ਚੁਣਿਆ ਫਾਇਲ ਇੱਕ SQLite ਡਾਟਾਬੇਸ ਨਹੀਂ ਹੈ</string>
+    <string name="db_loaded">ਡੀ.ਬੀ. ਲੋਡ ਕੀਤਾ ਗਿਆ ਸੀ. ਵੇਰਵੇ ਦਿਖਾਉਣ ਲਈ ਸਿਰਲੇਖ ਜਾਂ ਪੰਨੇ 'ਤੇ ਕਲਿਕ ਕਰੋ</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">ਪੰਨਿਆਂ ਦੀ ਸੂਚੀ</string>
+    <string name="page_contents">ਪੰਨਾ ਸਮੱਗਰੀ</string>
+    <string name="file_header">ਫਾਇਲ ਸਿਰਲੇਖ</string>
+    <string name="header_str">ਹੈਡਰ String: </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">ਸਫ਼ਾ ਆਕਾਰ: </string>
+    <string name="ff_write_ver">ਫਾਇਲ ਫਾਰਮੈਟ ਲਿਖਣ ਦਾ ਰੂਪ: </string>
+    <string name="ff_read_ver">ਫਾਇਲ ਫਾਰਮੈਟ ਵਰਜਨ ਨੂੰ ਪੜ੍ਹਿਆ: </string>
+    <string name="unused_res_space">ਹਰੇਕ ਪੰਨੇ ਦੇ ਅਖੀਰ ਵਿਚ ਨਾ ਵਰਤੇ ਹੋਏ ਰਿਜ਼ਰਵਡ ਸਪੇਸ ਦੇ ਬਾਈਟਸ: </string>
+    <string name="max_pl_frac">ਵੱਧ ਤੋਂ ਵੱਧ ਇੰਬੈੱਡ ਪੇਲੋਡ ਲੋਡ 64 ਸਾਲ ਦੀ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ: </string>
+    <string name="min_pl_frac">ਘੱਟੋ ਘੱਟ ਸ਼ਾਮਲ ਪੇਲੋਡ ਲੋਡ 32 ਹੋਣਾ ਜਰੂਰੀ ਹੈ: </string>
+    <string name="leaf_pl_frac">ਲੀਫ ਪੇਲੋਡ ਲੋਡ 32 ਹੋਣਾ ਜਰੂਰੀ ਹੈ: </string>
+    <string name="file_chg_ctr">ਫਾਈਲ ਤਬਦੀਲੀ ਕਾਊਂਟਰ: </string>
+    <string name="db_size_pages">ਪੇਜ਼ਾਂ ਵਿਚ ਡਾਟਾਬੇਸ ਫਾਈਲ ਦਾ ਆਕਾਰ: </string>
+    <string name="page_no_fflt">ਪਹਿਲੇ ਫ੍ਰੀਸਲਿਸਟ ਤਣੇ ਪੰਨਾ ਦਾ ਪੇਜ ਨੰਬਰ: </string>
+    <string name="fl_count">ਫ੍ਰੀਲਿਸਟ ਪੰਨਿਆਂ ਦੀ ਕੁੱਲ ਗਿਣਤੀ: </string>
+    <string name="sch_cookie">ਸਕੀਮਾ ਕੂਕੀ: </string>
+    <string name="sch_fmt_num">ਸਕੀਮਾ ਫਾਰਮੈਟ ਨੰਬਰ (ਸਮਰਥਿਤ 1, 2, 3, ਅਤੇ 4): </string>
+    <string name="dflt_pg_cache_sz">ਡਿਫੌਲਟ ਸਫ਼ਾ ਕੈਚ ਆਕਾਰ: </string>
+    <string name="lgst_bt_pg_no">ਵੱਡਾ ਰੂਟ 'b-tree' ਸਫ਼ਾ ਨੰਬਰ (ਆਟੋ-ਵੈਕਿਊਮ ਜਾਂ ਵਾਧੇ ਵਾਲੀ ਵੈਕਯੂਮ ਮੋਡ ਵਿੱਚ, ਦੂਜਾ 0): </string>
+    <string name="db_txt_enc">ਡਾਟਾਬੇਸ ਟੈਕਸਟ ਇੰਕੋਡਿੰਗ (1-UTF-8, 2-UTF-16LE, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">'ਯੂਜ਼ਰ ਸੰਸਕਰਣ' ਨੂੰ ਯੂਜ਼ਰ_ਵਰਜ਼ਨ ਪ੍ਰਗਮਾ ਦੁਆਰਾ ਪੜ੍ਹਿਆ ਅਤੇ ਸੈੱਟ ਕੀਤਾ ਗਿਆ ਹੈ. </string>
+    <string name="inc_vac_mode">ਇੰਕਰੀਮੈਂਟਲ-ਵੈਕਯੂਮ ਮੋਡ (0-ਸਹੀਂ, 1-ਫੋਲਾ): </string>
+    <string name="app_id_pgma">'ਅਰਜ਼ੀ ਆਈਡੀ' ਪ੍ਰਗਮਾ ਐਪਲੀਕੇਸ਼ਨ_id ਦੁਆਰਾ ਦਰਸਾਈ ਗਈ ਹੈ: </string>
+    <string name="vv_for_num">ਵਰਜਨ-ਸਹੀ-ਗਿਣਤੀ ਲਈ: </string>
+    <string name="sqlite_ver_num">SQLite ਵਰਜਨ ਨੰਬਰ: </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">ਲੀਫ਼ ਪੰਨਾ ਨੰਬਰ: </string>
+    <string name="next_trnk_pg">ਅਗਲਾ ਤਣਾਅ ਪੰਨਾ: </string>
+    <string name="fl_leaf_count">ਫ੍ਰੀਲਿਸਟ ਲੀਫ ਗਿਣਤੀ: </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">ਸਫ਼ਾ ਕਿਸਮ: </string>
+    <string name="first_fb">ਸਫ਼ੇ 'ਤੇ ਪਹਿਲਾ ਮੁਫਤ ਬਲਾਕ: </string>
+    <string name="num_cells">ਕੋਸ਼ਾਂ ਦੀ ਗਿਣਤੀ: </string>
+    <string name="cntnt_area_start">ਸੈਲ ਸਮੱਗਰੀ ਖੇਤਰ ਦੇ 'ਬਾਈਟ' ਤੋਂ ਸ਼ੁਰੂਆਤ: </string>
+    <string name="frag_free_count">ਟੁਕੜੇ ਖਾਲੀ ਬਾਈਟਾਂ ਦੀ ਗਿਣਤੀ: </string>
+    <string name="ptype_desc">(2-ਅੰਦਰੂਨੀ ਇੰਡੈਕਸ, 5-ਅੰਦਰੂਨੀ ਟੇਬਲ, 10-ਪੱਤੀ ਇੰਡੈਕਸ, 13-ਪੱਤੀ ਟੇਬਲ)</string>
+    <string name="cells">ਸੈਲ: </string>
+    <string name="row_id">ਰੋ Id</string>
+    <string name="len">ਲੰਬਾਈ</string>
+    <string name="ovfl">ਓਵਰਫਲੋ</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">B- ਟ੍ਰੀ ਪੰਨੇ ਦੇ ਤੌਰ ਤੇ ਦਿਖਾਓ</string>
+    <string name="nxt_pg">ਅਗਲਾ ਪੰਨਾ</string>
+    <string name="invalid">ਅਵੈਧ</string>
+    <string name="right_most_ptr">ਸੱਜੇ ਤੋਂ ਪੁਆਇੰਟਰ: </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">ਅਜੇ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਹੋਇਆ</string>
+    <string name="page">ਪੰਨਾ: </string>
+    <string name="open">ਖੋਲ੍ਹੋ</string>
+    <string name="ref">ਸੰਦਰਭ</string>
+    <string name="license">ਲਾਇਸੈਂਸ</string>
+    <string name="privacy">ਪਰਾਈਵੇਟ ਨੀਤੀ</string>
 
 </resources>

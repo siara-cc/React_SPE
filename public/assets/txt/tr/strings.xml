@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite Sayfa Gezgini</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">Veritabanını aç</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">Dosya açık değil</string>
+    <string name="already">Zaten açık</string>
+    <string name="read_unable">Sayfa dosyadan tam olarak okunamıyor.</string>
+    <string name="int_idx">İç indeks</string>
+    <string name="int_tbl">İç tablo</string>
+    <string name="leaf_idx">Yaprak indeksi</string>
+    <string name="leaf_tbl">Yaprak tablo</string>
+    <string name="no_file">Dosya seçilmedi.</string>
+    <string name="not_sqlite_db">Seçilen dosya bir SQLite veritabanı değil.</string>
+    <string name="db_loaded">Db yüklü. Ayrıntıları görüntülemek için Üstbilgi veya Sayfalara tıklayın</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">Sayfa listesi</string>
+    <string name="page_contents">Sayfa içeriği</string>
+    <string name="file_header">Dosya Başlığı</string>
+    <string name="header_str">Başlık String: </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">Sayfa boyutu: </string>
+    <string name="ff_write_ver">Dosya formatı yaz sürümü: </string>
+    <string name="ff_read_ver">Dosya formatı sürümü okumak: </string>
+    <string name="unused_res_space">Her sayfanın sonunda kullanılmayan ayrılmış alanın baytı: </string>
+    <string name="max_pl_frac">Maksimum gömülü taşıma yükü oranı. 64 olmalı: </string>
+    <string name="min_pl_frac">Minimum gömülü taşıma yükü oranı. 32 olmalı: </string>
+    <string name="leaf_pl_frac">Yaprak taşıma yükü oranı. 32 olmalı: </string>
+    <string name="file_chg_ctr">Dosya değişim sayacı: </string>
+    <string name="db_size_pages">Sayfalarda veritabanı dosyasının boyutu: </string>
+    <string name="page_no_fflt">İlk freelist trunk sayfasının sayfa numarası: </string>
+    <string name="fl_count">Toplam freelist sayfası sayısı: </string>
+    <string name="sch_cookie">Şema çerezi: </string>
+    <string name="sch_fmt_num">Şema formatı numarası (Desteklenen 1, 2, 3 ve 4): </string>
+    <string name="dflt_pg_cache_sz">Varsayılan sayfa önbellek boyutu: </string>
+    <string name="lgst_bt_pg_no">En büyük kök 'b-tree' sayfa numarası (otomatik vakumlu veya artımlı vakumlu modlarda, diğer 0): </string>
+    <string name="db_txt_enc">Veritabanı metni kodlaması (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">User_version pragma .: tarafından okunan ve ayarlanan 'kullanıcı sürümü': </string>
+    <string name="inc_vac_mode">Artımlı vakum modu (0-doğru, 1-yanlış): </string>
+    <string name="app_id_pgma">PRAGMA application_id tarafından ayarlanan 'Uygulama Kimliği': </string>
+    <string name="vv_for_num">Geçerli sürüm numarası: </string>
+    <string name="sqlite_ver_num">SQLite Sürüm Numarası: </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">Yaprak sayfa no .: </string>
+    <string name="next_trnk_pg">Sonraki Trunk Page: </string>
+    <string name="fl_leaf_count">Freelist Yaprak Sayısı: </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">Sayfa türü: </string>
+    <string name="first_fb">Sayfadaki ilk boş blok: </string>
+    <string name="num_cells">Hücre sayısı: </string>
+    <string name="cntnt_area_start">Hücre içerik alanının 'bayt'ı başlat: </string>
+    <string name="frag_free_count">Parçalanmış serbest bayt sayısı: </string>
+    <string name="ptype_desc">(2-iç indeks, 5-iç tablo, 10-yaprak indeksi, 13-yaprak tablo)</string>
+    <string name="cells">Hücreler: </string>
+    <string name="row_id">Satır No</string>
+    <string name="len">Uzunluk</string>
+    <string name="ovfl">Taşma</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">'B Ağacı' Sayfası Olarak Göster</string>
+    <string name="nxt_pg">Sonraki Sayfa</string>
+    <string name="invalid">Geçersiz</string>
+    <string name="right_most_ptr">En işaretçi: </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">Henüz açılmadı</string>
+    <string name="page">Sayfa: </string>
+    <string name="open">Açık</string>
+    <string name="ref">Referans</string>
+    <string name="license">Lisans</string>
+    <string name="privacy">Gizlilik Politikası</string>
 
 </resources>

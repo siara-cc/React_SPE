@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite 페이지 브라우저</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">데이터베이스 열기</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">파일이 열리지 않음</string>
+    <string name="already">이미 열려있다.</string>
+    <string name="read_unable">파일에서 페이지를 완전히 읽을 수 없습니다.</string>
+    <string name="int_idx">내부 색인</string>
+    <string name="int_tbl">인테리어 테이블</string>
+    <string name="leaf_idx">리프 인덱스</string>
+    <string name="leaf_tbl">리프 테이블</string>
+    <string name="no_file">파일이 선택되지 않았습니다.</string>
+    <string name="not_sqlite_db">선택한 파일이 SQLite 데이터베이스가 아닙니다.</string>
+    <string name="db_loaded">DB가로드되었습니다. 세부 정보를 표시하려면 헤더 또는 페이지를 클릭하십시오.</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">페이지 목록</string>
+    <string name="page_contents">페이지 내용</string>
+    <string name="file_header">파일 헤더</string>
+    <string name="header_str">머리글 문자 : </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">페이지 크기: </string>
+    <string name="ff_write_ver">파일 형식 쓰기 버전 : </string>
+    <string name="ff_read_ver">파일 형식 읽기 버전 : </string>
+    <string name="unused_res_space">각 페이지의 끝에있는 사용되지 않은 예약 공간의 바이트 수 : </string>
+    <string name="max_pl_frac">최대 내장 페이로드 비율. 64이어야합니다. </string>
+    <string name="min_pl_frac">최소 임베디드 페이로드 비율. 32이어야합니다 : </string>
+    <string name="leaf_pl_frac">잎 가반 질량. 32이어야합니다 : </string>
+    <string name="file_chg_ctr">파일 변경 카운터 : </string>
+    <string name="db_size_pages">페이지 단위의 데이터베이스 파일 크기 : </string>
+    <string name="page_no_fflt">첫 번째 freelist trunk 페이지의 페이지 번호 : </string>
+    <string name="fl_count">총 프리리스트 페이지 수 : </string>
+    <string name="sch_cookie">스키마 쿠키 : </string>
+    <string name="sch_fmt_num">스키마 형식 번호 (지원되는 1, 2, 3 및 4) : </string>
+    <string name="dflt_pg_cache_sz">기본 페이지 캐시 크기 : </string>
+    <string name="lgst_bt_pg_no">가장 큰 루트 b 트리 페이지 번호 (자동 진공 또는 증분 진공 모드에서, 그렇지 않으면 0) : </string>
+    <string name="db_txt_enc">데이터베이스 텍스트 인코딩 (1-UTF-8, 2-UTF-16le, 3-UTF-16be) : </string>
+    <string name="usr_ver_pgma">user_version pragma에 의해 읽고 설정되는 '사용자 버전'. </string>
+    <string name="inc_vac_mode">점진적 진공 모드 (0 - 참, 1 - 거짓) : </string>
+    <string name="app_id_pgma">PRAGMA application_id에 의해 설정된 'Application ID': </string>
+    <string name="vv_for_num">버전 유효 번호 : </string>
+    <string name="sqlite_ver_num">SQLite 버전 번호 : </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">리프 페이지 번호 : </string>
+    <string name="next_trnk_pg">다음 트렁크 페이지 : </string>
+    <string name="fl_leaf_count">프리리스트 리프 수 : </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">페이지 유형 : </string>
+    <string name="first_fb">첫 번째 무료 페이지 차단 : </string>
+    <string name="num_cells">페이지의 셀 수 : </string>
+    <string name="cntnt_area_start">셀 내용 영역의 '바이트'시작 : </string>
+    <string name="frag_free_count">단편화 된 여유 바이트 수 : </string>
+    <string name="ptype_desc">(2- 인테리어 인덱스, 5- 실내 테이블, 10 잎 인덱스, 13 잎 테이블)</string>
+    <string name="cells">세포 : </string>
+    <string name="row_id">행 ID</string>
+    <string name="len">길이</string>
+    <string name="ovfl">과다</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">B- 트리 페이지로 표시</string>
+    <string name="nxt_pg">다음 페이지</string>
+    <string name="invalid">무효</string>
+    <string name="right_most_ptr">가장 오른쪽 포인터 : </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">아직 열지 않았다.</string>
+    <string name="page">페이지: </string>
+    <string name="open">열다</string>
+    <string name="ref">참고</string>
+    <string name="license">특허</string>
+    <string name="privacy">개인 정보 정책</string>
 
 </resources>

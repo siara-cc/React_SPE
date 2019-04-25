@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">Abrir base de datos</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">Archivo no abierto</string>
+    <string name="already">Ya abierto</string>
+    <string name="read_unable">No se puede leer la página del archivo completamente.</string>
+    <string name="int_idx">Índice interior</string>
+    <string name="int_tbl">Mesa interior</string>
+    <string name="leaf_idx">Índice de hojas</string>
+    <string name="leaf_tbl">Mesa de hojas</string>
+    <string name="no_file">Ningún archivo seleccionado.</string>
+    <string name="not_sqlite_db">El archivo seleccionado no es una base de datos SQLite.</string>
+    <string name="db_loaded">DB cargado. Haga doble clic en Encabezado o Páginas para mostrar los detalles.</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">Contorno de página</string>
+    <string name="page_contents">Contenidos de la pagina</string>
+    <string name="file_header">Encabezado de archivo</string>
+    <string name="header_str">Cadena de encabezado: </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">Tamaño de página: </string>
+    <string name="ff_write_ver">Formato de archivo escribir versión: </string>
+    <string name="ff_read_ver">Formato de archivo de la versión leída: </string>
+    <string name="unused_res_space">Bytes de espacio reservado no utilizado al final de cada página: </string>
+    <string name="max_pl_frac">Fracción de carga útil máxima incorporada. Debe ser 64: </string>
+    <string name="min_pl_frac">Fracción de carga útil mínima incorporada. Debe ser 32: </string>
+    <string name="leaf_pl_frac">Fracción de la carga útil de la hoja. Debe ser 32: </string>
+    <string name="file_chg_ctr">Contador de cambios de archivo: </string>
+    <string name="db_size_pages">Tamaño del archivo de base de datos en páginas: </string>
+    <string name="page_no_fflt">Número de página de la primera página de lista de enlaces gratuitos: </string>
+    <string name="fl_count">Número total de páginas libres: </string>
+    <string name="sch_cookie">La cookie de schema: </string>
+    <string name="sch_fmt_num">El número de formato del esquema (admitidos son 1, 2, 3 y 4): </string>
+    <string name="dflt_pg_cache_sz">Tamaño de caché de página predeterminado: </string>
+    <string name="lgst_bt_pg_no">La raíz más grande 'b-tree' página no. (en modos de vacío automático o de vacío incremental, de lo contrario 0): </string>
+    <string name="db_txt_enc">La codificación de texto de la base de datos (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">La 'versión de usuario' como leída y establecida por el usuario_version pragma .: </string>
+    <string name="inc_vac_mode">Modo de vacío incremental (0-verdadero, 1-falso): </string>
+    <string name="app_id_pgma">El 'ID de aplicación' establecido por PRAGMA application_id: </string>
+    <string name="vv_for_num">El número de 'versión válida para': </string>
+    <string name="sqlite_ver_num">Número de versión de SQLite: </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">Número de página 'Leaf': </string>
+    <string name="next_trnk_pg">Siguiente página de tronco: </string>
+    <string name="fl_leaf_count">Número de hojas Freelist: </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">Tipo de página: </string>
+    <string name="first_fb">Primer bloque libre en la página: </string>
+    <string name="num_cells">Número de celdas en la página: </string>
+    <string name="cntnt_area_start">Inicio del área de contenido de la celda: </string>
+    <string name="frag_free_count">No. de bytes libres fragmentados: </string>
+    <string name="ptype_desc">(2-Índice interior, 5-Mesa interior, 10-Índice de hojas, 13-Mesa de hojas)</string>
+    <string name="cells">Células: </string>
+    <string name="row_id">ID de fila</string>
+    <string name="len">Longitud</string>
+    <string name="ovfl">Rebosar</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">Mostrar como página B-Tree</string>
+    <string name="nxt_pg">Siguiente página</string>
+    <string name="invalid">Inválido</string>
+    <string name="right_most_ptr">Puntero de la derecha: </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">No abierto aún</string>
+    <string name="page">Página: </string>
+    <string name="open">Abierto</string>
+    <string name="ref">Referencia</string>
+    <string name="license">Licencia</string>
+    <string name="privacy">Política de privacidad</string>
 
 </resources>

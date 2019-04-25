@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite பக்க உலாவி</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">DB திறக்க</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">கோப்பு திறக்கப்படவில்லை</string>
+    <string name="already">ஏற்கனவே திறக்கப்பட்டுள்ளது</string>
+    <string name="read_unable">பக்கத்தை முழுமையாக படிக்க முடியவில்லை.</string>
+    <string name="int_idx">உள் குறியீடு</string>
+    <string name="int_tbl">உள் அட்டவணை</string>
+    <string name="leaf_idx">இலை குறியீடு</string>
+    <string name="leaf_tbl">இலை அட்டவணை</string>
+    <string name="no_file">எந்த கோப்பும் தேர்வு செய்ய படவில்லை.</string>
+    <string name="not_sqlite_db">தேர்ந்தெடுத்த கோப்பு ஒரு SQLite DB அல்ல.</string>
+    <string name="db_loaded">DB ஏற்றப்பட்டது. விவரங்களைக் காட்டுவதற்கு தலைப்பு அல்லது பக்கங்களில் கிளிக் செய்க</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">பக்க பட்டியல்</string>
+    <string name="page_contents">பக்க உள்ளடக்கங்கள்</string>
+    <string name="file_header">கோப்பு தலைப்பு</string>
+    <string name="header_str">தலைப்பு String: </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">பக்க அளவு: </string>
+    <string name="ff_write_ver">கோப்பு வடிவம் எழுதுதல் பதிப்பு: </string>
+    <string name="ff_read_ver">கோப்பு வடிவம் படித்தல் பதிப்பு: </string>
+    <string name="unused_res_space">ஒவ்வொரு பக்கத்தின் முடிவிலும் பயன்படுத்தப்படாத ஒதுக்கப்பட்ட இடங்களின் பைட்ஸ்: </string>
+    <string name="max_pl_frac">அதிகபட்ச பதிக்கப்பட்ட பேலோட் பின்னம். 64 ஆக இருக்க வேண்டும்: </string>
+    <string name="min_pl_frac">குறைந்தபட்ச பதிக்கப்பட்ட பேலோட் பின்னம். 32 ஆக இருக்க வேண்டும்:  </string>
+    <string name="leaf_pl_frac">இலை பேலோடு பின்னம். 32 ஆக இருக்க வேண்டும்: </string>
+    <string name="file_chg_ctr">கோப்பு மாற்று கவுண்டர்: </string>
+    <string name="db_size_pages">DB அளவு (பக்கங்களில்): </string>
+    <string name="page_no_fflt">முதல் ஃப்ரீலிஸ்ட் ட்ரங்குப் பக்கத்தின் எண்: </string>
+    <string name="fl_count">ஃப்ரீலிஸ்ட் பக்கங்களின் மொத்த எண்ணிக்கை: </string>
+    <string name="sch_cookie">DB திட்டத்தின் குக்கீ: </string>
+    <string name="sch_fmt_num">DB திட்ட வடிவமைப்பு எண் (1, 2, 3 மற்றும் 4): </string>
+    <string name="dflt_pg_cache_sz">இயல்புநிலை பக்க கேச் அளவு: </string>
+    <string name="lgst_bt_pg_no">பெரிய ரூட் "b-tree" பக்க எண் ('auto-vacuum' அல்லது 'incremental-vacuum' முறைகள்): </string>
+    <string name="db_txt_enc">DB உரை குறியீட்டு முறை (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">User_version pragma மூலம் படித்து, அமைக்கப்பட்டுள்ள 'பயனர் பதிப்பு' .: </string>
+    <string name="inc_vac_mode">அதிகரிக்கும்-வெற்றிட முறை (0-உண்மை, 1-பொய்): </string>
+    <string name="app_id_pgma">PRAGMA application_id அமைத்த 'பயன்பாட்டு ID': </string>
+    <string name="vv_for_num">பதிப்பு செல்லுபடியாகும் எண்: </string>
+    <string name="sqlite_ver_num">SQLite பதிப்பு எண்: </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">இலை பக்க எண்: </string>
+    <string name="next_trnk_pg">அடுத்த ட்ரங்க் பக்கம்: </string>
+    <string name="fl_leaf_count">ஃப்ரீலிஸ்ட் லீஃப் கவுண்ட்: </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">பக்க வகை: </string>
+    <string name="first_fb">பக்கத்தில் முதல் காலி தொகுதி: </string>
+    <string name="num_cells">பக்கத்தில் கலங்களின் எண்ணிக்கை: </string>
+    <string name="cntnt_area_start">செல் உள்ளடக்க பகுதியில் தொடக்க 'பைட்': </string>
+    <string name="frag_free_count">துண்டு துண்டான காலி பைட்டுகளின் எண்ணிக்கை: </string>
+    <string name="ptype_desc">(2 உள் குறியீட்டு, 5 உள் அட்டவணை, 10-இலை குறியீட்டு, 13-இலை அட்டவணை)</string>
+    <string name="cells">செல்கள்: </string>
+    <string name="row_id">வரிசை ஐடி</string>
+    <string name="len">நீளம்</string>
+    <string name="ovfl">மிகுதி</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">'B-Tree' பக்கமாக காட்டு</string>
+    <string name="nxt_pg">அடுத்த பக்கம்</string>
+    <string name="invalid">செல்லாது</string>
+    <string name="right_most_ptr">வலது குறியீடு: </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">இன்னும் திறக்கப்படவில்லை</string>
+    <string name="page">பக்கம்: </string>
+    <string name="open">திறந்த</string>
+    <string name="ref">குறிப்பு</string>
+    <string name="license">உரிமம்</string>
+    <string name="privacy">தனியுரிமை கொள்கை</string>
 
 </resources>

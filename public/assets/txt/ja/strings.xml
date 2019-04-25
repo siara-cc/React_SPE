@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqliteページエクスプローラ</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">データベースを開く</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">ファイルが開いていません</string>
+    <string name="already">すでに開いています</string>
+    <string name="read_unable">ファイルからページを完全に読み取ることができません。</string>
+    <string name="int_idx">インテリアインデックス</string>
+    <string name="int_tbl">インテリアテーブル</string>
+    <string name="leaf_idx">葉のインデックス</string>
+    <string name="leaf_tbl">葉テーブル</string>
+    <string name="no_file">ファイルが選択されていません。</string>
+    <string name="not_sqlite_db">選択されたファイルはSQLiteデータベースではありません。</string>
+    <string name="db_loaded">DBがロードされました。詳細を表示するには、ヘッダーまたはページをクリックしてください。</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">ページリスト</string>
+    <string name="page_contents">ページ内容</string>
+    <string name="file_header">ファイルヘッダー</string>
+    <string name="header_str">ヘッダー文字列： </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">ページサイズ： </string>
+    <string name="ff_write_ver">ファイルフォーマット書き込みバージョン： </string>
+    <string name="ff_read_ver">ファイル形式の読み込みバージョン： </string>
+    <string name="unused_res_space">各ページの終わりにある未使用の予約済みスペースのバイト数： </string>
+    <string name="max_pl_frac">最大埋め込みペイロード分数。 64でなければなりません： </string>
+    <string name="min_pl_frac">最小埋め込みペイロードの割合。 32でなければなりません： </string>
+    <string name="leaf_pl_frac">葉のペイロードの割合32でなければなりません： </string>
+    <string name="file_chg_ctr">ファイル変更カウンター </string>
+    <string name="db_size_pages">データベースファイルのサイズ（ページ数）: </string>
+    <string name="page_no_fflt">最初のフリーリストトランクページのページ番号： </string>
+    <string name="fl_count">フリーリストページの総数： </string>
+    <string name="sch_cookie">スキーマクッキー： </string>
+    <string name="sch_fmt_num">スキーマフォーマット番号（サポートされているのは1、2、3、および4）： </string>
+    <string name="dflt_pg_cache_sz">デフォルトのページキャッシュサイズ： </string>
+    <string name="lgst_bt_pg_no">最大ルートBツリーページ番号（自動バキュームモードまたはインクリメンタルバキュームモード、それ以外の場合は0）: </string>
+    <string name="db_txt_enc">データベースのテキストエンコーディング（1-UTF-8、2-UTF-16le、3-UTF-16be） </string>
+    <string name="usr_ver_pgma">user_versionプラグマによって読み込まれ設定される 'user version'： </string>
+    <string name="inc_vac_mode">インクリメンタルバキュームモード（0  - 真、1  - 偽）： </string>
+    <string name="app_id_pgma">PRAGMA application_idによって設定された「アプリケーションID」： </string>
+    <string name="vv_for_num">有効バージョン番号： </string>
+    <string name="sqlite_ver_num">SQLiteのバージョン番号： </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">リーフページ番号： </string>
+    <string name="next_trnk_pg">次のトランクページ： </string>
+    <string name="fl_leaf_count">フリーリストの葉の数： </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">ページの種類: </string>
+    <string name="first_fb">ページの最初の空きブロック： </string>
+    <string name="num_cells">ページ上のセル数： </string>
+    <string name="cntnt_area_start">セルコンテンツ領域の開始 </string>
+    <string name="frag_free_count">断片化した空きバイト数 </string>
+    <string name="ptype_desc">（2インテリアインデックス、5インテリアテーブル、10リーフインデックス、13リーフテーブル）</string>
+    <string name="cells">セル： </string>
+    <string name="row_id">行ID</string>
+    <string name="len">長さ</string>
+    <string name="ovfl">オーバーフロー</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">Bツリーページとして表示</string>
+    <string name="nxt_pg">次のページ</string>
+    <string name="invalid">無効</string>
+    <string name="right_most_ptr">一番右のポインタ： </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">まだ開いていません</string>
+    <string name="page">ページ： </string>
+    <string name="open">開いた</string>
+    <string name="ref">参照</string>
+    <string name="license">ライセンス</string>
+    <string name="privacy">個人情報保護方針</string>
 
 </resources>

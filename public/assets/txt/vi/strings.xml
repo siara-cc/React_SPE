@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Người thám hiểm trang sách Sqlite</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">Mở cơ sở dữ liệu</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
-    <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="file_not_open">Tệp không mở</string>
+    <string name="already">Đã mở</string>
+    <string name="read_unable">Không thể đọc trang từ tập tin đầy đủ.</string>
+    <string name="int_idx">Chỉ số nội bộ</string>
+    <string name="int_tbl">Bảng nội bộ</string>
+    <string name="leaf_idx">Chỉ số lá</string>
+    <string name="leaf_tbl">Bàn lá</string>
+    <string name="no_file">Không tài liệu nào được chọn.</string>
+    <string name="not_sqlite_db">Tệp được chọn không phải là cơ sở dữ liệu SQLite.</string>
+    <string name="db_loaded">Đã tải DB. Nhấp vào Tiêu đề hoặc Trang để hiển thị chi tiết</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
-    <string name="file_header">File Header</string>
-    <string name="header_str">Header String: </string>
+    <string name="page_outline">Danh sách trang</string>
+    <string name="page_contents">Nội dung trang</string>
+    <string name="file_header">Tiêu đề tệp</string>
+    <string name="header_str">Tiêu đề String: </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
-    <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="page_size">Kích thước trang: </string>
+    <string name="ff_write_ver">Định dạng tệp ghi phiên bản: </string>
+    <string name="ff_read_ver">Định dạng tệp đọc phiên bản: </string>
+    <string name="unused_res_space">Byte không gian dành riêng chưa sử dụng ở cuối mỗi trang: </string>
+    <string name="max_pl_frac">Phân số tải trọng nhúng tối đa. Phải là 64: </string>
+    <string name="min_pl_frac">Phân số tải trọng nhúng tối thiểu. Phải là 32: </string>
+    <string name="leaf_pl_frac">Phân số tải trọng lá. Phải là 32: </string>
+    <string name="file_chg_ctr">Bộ đếm thay đổi tập tin: </string>
+    <string name="db_size_pages">Kích thước của tệp cơ sở dữ liệu trong các trang: </string>
+    <string name="page_no_fflt">Số trang của trang trung kế tự do đầu tiên: </string>
+    <string name="fl_count">Tổng số trang tự do: </string>
+    <string name="sch_cookie">Cookie lược đồ: </string>
+    <string name="sch_fmt_num">Số định dạng lược đồ (Được hỗ trợ là 1, 2, 3 và 4): </string>
+    <string name="dflt_pg_cache_sz">Kích thước bộ đệm trang mặc định: </string>
+    <string name="lgst_bt_pg_no">Số trang gốc 'b-cây' lớn nhất (ở chế độ chân không tự động hoặc chân không gia tăng, khác 0): </string>
+    <string name="db_txt_enc">Mã hóa văn bản cơ sở dữ liệu (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">'Phiên bản người dùng' được đọc và đặt bởi user_version 'pragma': </string>
+    <string name="inc_vac_mode">Chế độ chân không tăng dần (0-true, 1-false): </string>
+    <string name="app_id_pgma">'ID ứng dụng' được đặt bởi PRAGMA application_id: </string>
+    <string name="vv_for_num">Phiên bản hợp lệ cho số: </string>
+    <string name="sqlite_ver_num">Số phiên bản SQLite: </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
-    <string name="fl_leaf_count">Freelist Leaf Count: </string>
+    <string name="leaf_pg_no">Trang lá số: </string>
+    <string name="next_trnk_pg">Trang thân tiếp theo: </string>
+    <string name="fl_leaf_count">Số lượng lá tự do: </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
-    <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="page_type">Loại trang: </string>
+    <string name="first_fb">Khối miễn phí đầu tiên trên trang: </string>
+    <string name="num_cells">Số lượng tế bào: </string>
+    <string name="cntnt_area_start">Bắt đầu 'byte' của vùng nội dung ô: </string>
+    <string name="frag_free_count">Số byte miễn phí bị phân mảnh: </string>
+    <string name="ptype_desc">(2-Chỉ số nội thất, 5-bảng nội thất, 10-chỉ số lá, 13-bảng lá)</string>
+    <string name="cells">Các tế bào: </string>
+    <string name="row_id">Hàng Id</string>
+    <string name="len">Chiều dài</string>
+    <string name="ovfl">Tràn ra</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">Hiển thị dưới dạng trang 'B-Tree'</string>
+    <string name="nxt_pg">Trang tiếp theo</string>
+    <string name="invalid">không hợp lệ</string>
+    <string name="right_most_ptr">Con trỏ cuối cùng: </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">Chưa mở</string>
+    <string name="page">Trang: </string>
+    <string name="open">Mở</string>
+    <string name="ref">Tài liệu tham khảo</string>
+    <string name="license">Giấy phép</string>
+    <string name="privacy">Chính sách bảo mật</string>
 
 </resources>

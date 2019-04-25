@@ -2,75 +2,75 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">Buksan ang db</string>
 
     <!-- Functions -->
-    <string name="file_not_open">File not open</string>
-    <string name="already">Already Open</string>
-    <string name="read_unable">Unable to read page from file fully.</string>
-    <string name="int_idx">Interior index</string>
-    <string name="int_tbl">Interior table</string>
+    <string name="file_not_open">Hindi bukas ang file</string>
+    <string name="already">Na Buksan</string>
+    <string name="read_unable">Hindi ganap na basahin ang pahina mula sa file.</string>
+    <string name="int_idx">Panloob na index</string>
+    <string name="int_tbl">Panloob na talahanayan</string>
     <string name="leaf_idx">Leaf index</string>
-    <string name="leaf_tbl">Leaf table</string>
-    <string name="no_file">No file selected.</string>
-    <string name="not_sqlite_db">Selected file is not a SQLite database.</string>
-    <string name="db_loaded">DB Loaded. Double click on Header or Pages to show details</string>
+    <string name="leaf_tbl">Leaf talahanayan</string>
+    <string name="no_file">Walang napiling file.</string>
+    <string name="not_sqlite_db">Ang napiling file ay hindi isang SQLite database.</string>
+    <string name="db_loaded">Naka-load ang DB. Mag-click sa Header o Pages upang ipakita ang mga detalye</string>
 
     <!-- Outline -->
-    <string name="page_outline">Page outline</string>
-    <string name="page_contents">Page contents</string>
+    <string name="page_outline">Listahan ng mga pahina</string>
+    <string name="page_contents">Mga nilalaman ng pahina</string>
     <string name="file_header">File Header</string>
     <string name="header_str">Header String: </string>
     <string name="sqlite_f3">SQLite Format 3</string>
-    <string name="page_size">Page Size: </string>
-    <string name="ff_write_ver">File format write version: </string>
-    <string name="ff_read_ver">File format read version: </string>
-    <string name="unused_res_space">Bytes of unused reserved space at the end of each page: </string>
-    <string name="max_pl_frac">Maximum embedded payload fraction. Must be 64: </string>
-    <string name="min_pl_frac">Minimum embedded payload fraction. Must be 32: </string>
-    <string name="leaf_pl_frac">Leaf payload fraction. Must be 32: </string>
-    <string name="file_chg_ctr">File change counter: </string>
-    <string name="db_size_pages">Size of database file in pages: </string>
-    <string name="page_no_fflt">Page number of the first freelist trunk page: </string>
-    <string name="fl_count">Total number of freelist pages: </string>
-    <string name="sch_cookie">The schema cookie: </string>
-    <string name="sch_fmt_num">The schema format number (Supported are 1, 2, 3, and 4): </string>
-    <string name="dflt_pg_cache_sz">Default page cache size: </string>
-    <string name="lgst_bt_pg_no">Largest root b-tree page no. (in auto-vacuum or incremental-vacuum modes, else 0): </string>
-    <string name="db_txt_enc">The database text encoding (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
-    <string name="usr_ver_pgma">The 'user version' as read and set by the user_version pragma.: </string>
+    <string name="page_size">Laki ng pahina: </string>
+    <string name="ff_write_ver">Isulat ang format ng file: </string>
+    <string name="ff_read_ver">Pagbasa ng format ng file: </string>
+    <string name="unused_res_space">Bytes ng hindi nagamit na espasyo sa dulo sa bawat pahina: </string>
+    <string name="max_pl_frac">Maximum na naka-embed na payload fraction. Dapat na 64: </string>
+    <string name="min_pl_frac">Minimum na naka-embed na payload fraction. Dapat na 32: </string>
+    <string name="leaf_pl_frac">Leaf payload fraction. Dapat ay 32: </string>
+    <string name="file_chg_ctr">Counter ng palitan ng file: </string>
+    <string name="db_size_pages">Sukat ng database file sa mga pahina:</string>
+    <string name="page_no_fflt">Ang numero ng pahina ng unang pahina ng puno ng freelist: </string>
+    <string name="fl_count">Kabuuang bilang ng mga freelist na pahina: </string>
+    <string name="sch_cookie">Ang schema cookie: </string>
+    <string name="sch_fmt_num">Ang numero ng format ng schema (Suportado ay 1, 2, 3, at 4): </string>
+    <string name="dflt_pg_cache_sz">Laki ng cache ng default na pahina: </string>
+    <string name="lgst_bt_pg_no">Pinakamalaking ugat ng 'b-tree' na numbe (sa auto-vacuum o incremental-vacuum mode, iba pang 0): </string>
+    <string name="db_txt_enc">Ang pag-encode ng teksto ng database (1-UTF-8, 2-UTF-16le, 3-UTF-16be): </string>
+    <string name="usr_ver_pgma">Ang 'bersyon ng gumagamit' bilang nabasa at itinakda ng user_version pragma .: </string>
     <string name="inc_vac_mode">Incremental-vacuum mode (0-true, 1-false): </string>
-    <string name="app_id_pgma">The 'Application ID' set by PRAGMA application_id: </string>
-    <string name="vv_for_num">The version-valid-for number: </string>
-    <string name="sqlite_ver_num">SQLite Version Number: </string>
+    <string name="app_id_pgma">Ang 'Application ID' na itinakda ng PRAGMA application_id: </string>
+    <string name="vv_for_num">Ang bersyon-valid-for number: </string>
+    <string name="sqlite_ver_num">Numero ng Bersyon ng SQLite: </string>
 
-    <string name="leaf_pg_no">Leaf page no.: </string>
-    <string name="next_trnk_pg">Next Trunk Page: </string>
+    <string name="leaf_pg_no">Leaf pahina number: </string>
+    <string name="next_trnk_pg">Susunod na Pahina ng Trunk: </string>
     <string name="fl_leaf_count">Freelist Leaf Count: </string>
 
-    <string name="page_type">Page type: </string>
-    <string name="first_fb">First free block on page: </string>
-    <string name="num_cells">Number of cells on Page: </string>
-    <string name="cntnt_area_start">Start of cell content area: </string>
-    <string name="frag_free_count">No. of fragmented free bytes: </string>
-    <string name="ptype_desc">(2-interior index, 5-interior table, 10-leaf index, 13-leaf table)</string>
-    <string name="cells">Cells: </string>
+    <string name="page_type">Uri ng pahina: </string>
+    <string name="first_fb">Unang libreng bloke sa pahina: </string>
+    <string name="num_cells">Bilang ng mga cell sa pahina: </string>
+    <string name="cntnt_area_start">Simula 'byte' ng lugar ng nilalaman ng cell: </string>
+    <string name="frag_free_count">Bilang ng mga fragmented free bytes: </string>
+    <string name="ptype_desc">(2-panloob na index, 5-panloob na talahanayan, 10-leaf index, 13-leaf table)</string>
+    <string name="cells">Mga cell: </string>
     <string name="row_id">Row Id</string>
-    <string name="len">Len</string>
-    <string name="ovfl">Overflow</string>
+    <string name="len">Haba</string>
+    <string name="ovfl">Pag-apaw</string>
 
-    <string name="show_as_bt_pg">Show as B-Tree Page</string>
-    <string name="nxt_pg">Next Page</string>
-    <string name="invalid">Invalid</string>
-    <string name="right_most_ptr">Right most pointer: </string>
+    <string name="show_as_bt_pg">Ipakita bilang 'B-Tree' Pahina</string>
+    <string name="nxt_pg">Susunod na pahina</string>
+    <string name="invalid">Di-wasto</string>
+    <string name="right_most_ptr">Karapatan pinaka pointer: </string>
 
     <!-- Footer -->
     <string name="db">DB: </string>
-    <string name="not_opened">Not opened yet</string>
-    <string name="page">Page: </string>
-    <string name="open">Open</string>
-    <string name="ref">Ref</string>
-    <string name="license">License</string>
-    <string name="privacy">Privacy</string>
+    <string name="not_opened">Hindi pa nabuksan</string>
+    <string name="page">Pahina: </string>
+    <string name="open">Buksan</string>
+    <string name="ref">Sanggunian</string>
+    <string name="license">Lisensya</string>
+    <string name="privacy">Patakaran sa Pagkapribado</string>
 
 </resources>

@@ -1,0 +1,26 @@
+<languages>
+  <default code="" name="English" dir="ltr">English</default>
+  <lang code="ar" name="Arabic" dir="rtl">العربية</lang>
+  <lang code="bn" name="Bengali" dir="ltr">বাংলা</lang>
+  <lang code="de" name="German" dir="ltr">Deutsch</lang>
+  <lang code="es" name="Spanish" dir="ltr">Español</lang>
+  <lang code="fa" name="Persian" dir="rtl">فارسی</lang>
+  <lang code="fr" name="French" dir="ltr">Français</lang>
+  <lang code="hi" name="Hindi" dir="ltr">हिन्दी</lang>
+  <lang code="it" name="Italian" dir="ltr">Italiano</lang>
+  <lang code="ja" name="Japanese" dir="ltr">日本語</lang>
+  <lang code="jv" name="Javanese" dir="ltr">Basa Jawa</lang>
+  <lang code="ko" name="Korean" dir="ltr">한국어</lang>
+  <lang code="ms" name="Malay" dir="ltr">Bahasa Melayu</lang>
+  <lang code="my" name="Burmese" dir="ltr">ဗမာစာ</lang>
+  <lang code="pa" name="Punjabi" dir="ltr">ਪੰਜਾਬੀ</lang>
+  <lang code="pl" name="Polish" dir="ltr">język polski</lang>
+  <lang code="pt" name="Portuguese" dir="ltr">Português</lang>
+  <lang code="ru" name="Russian" dir="ltr">русский</lang>
+  <lang code="ta" name="Tamil" dir="ltr">தமிழ்</lang>
+  <lang code="tl" name="Tagalog" dir="ltr">Wikang Tagalog</lang>
+  <lang code="tr" name="Turkish" dir="ltr">Türkçe</lang>
+  <lang code="ur" name="Urdu" dir="rtl">اردو</lang>
+  <lang code="vi" name="Vietnamese" dir="ltr">Tiếng Việt</lang>
+  <lang code="zh" name="Chinese" dir="ltr">中文</lang>
+</languages>

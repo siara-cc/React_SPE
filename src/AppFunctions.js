@@ -173,6 +173,7 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     newState.typName = "Header";
     newState.pageContent = buffer;
     newState.start = 0;
+    newState.lang = state.lang;
     newState.pageList = [];
     newState.pageCount = 2;
     newState.pageList[0] = { pageId: 'h0', typName: 'Header', typDesc: 'Header', pageNo: 1, start: 0, pageList: [] }

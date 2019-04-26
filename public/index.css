@@ -14,7 +14,7 @@ li {
   cursor: pointer
 }
 a {
-  font-family: Arial Narrow, Arial, sans-serif;
+  /*font-family: Arial Narrow, Arial, sans-serif;*/
   text-decoration: none
 }
 .container {

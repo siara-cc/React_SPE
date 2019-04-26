@@ -19,12 +19,14 @@ class App extends PureComponent {
       start: 0,
       pageId: '',
       typName: "",
-      pageContent: []
+      pageContent: [],
+      lang: ""
     };
     this.setStateOnOpen = this.setStateOnOpen.bind(this)
     this.setPageContent = this.setPageContent.bind(this)
     this.addPageItem = this.addPageItem.bind(this)
     this.locateParentPageItem = this.locateParentPageItem.bind(this)
+    this.setLang = this.setLang.bind(this)
   }
   setStateOnOpen(st) {
     this.setState(st);
@@ -36,7 +38,20 @@ class App extends PureComponent {
       start: start,
       pageId: pageId,
       typName: typName,
-      pageContent: pageBytes
+      pageContent: pageBytes,
+      lang: this.state.lang
+    }
+    this.setState(newState);
+  }
+  setLang(lang) {
+    var newState = { pageCount: this.state.pageCount,
+      pageList: this.state.pageList,
+      dbInfo: this.state.dbInfo,
+      start: this.state.start,
+      pageId: this.state.pageId,
+      typName: this.state.typName,
+      pageContent: this.state.pageContent,
+      lang: lang
     }
     this.setState(newState);
   }
@@ -74,7 +89,7 @@ class App extends PureComponent {
         <Outline parentState={this.state} setPageContent={this.setPageContent} 
                   addPageItem={this.addPageItem}/>
         <ByteView parentState={this.state} />
-        <AppFooter updateState={this.updateState} />
+        <AppFooter setLang={this.setLang} lang={this.state.lang} />
       </div>
     );
   }

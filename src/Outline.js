@@ -48,8 +48,9 @@ class PageList extends React.PureComponent {
                 this.props.parentState.dbInfo.pageSize);
               this.props.setPageContent(parseInt(event.target.getAttribute("attrStart"), 10),
                 event.target.getAttribute("attrTypName"), 
-                event.target.id, pc); }}>
-              {pageItem.typName} {pageItem.typDesc} {pageItem.pageNo}
+                event.target.id, pc);
+              event.preventDefault();}}>
+              {pageItem.typName} {pageItem.typDesc}
               <PageList parentState={this.props.parentState} 
                 pageList={pageItem.pageList} 
                 setPageContent={this.props.setPageContent} />

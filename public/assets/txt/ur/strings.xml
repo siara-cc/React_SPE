@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Urdu -->
+
     <!-- Header -->
     <string name="app_name">Sqlite صفحہ ایکسپلورر</string>
     <string name="open_db">ڈیٹا بیس کھولیں</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">اگلا صفحہ</string>
     <string name="invalid">غلط</string>
     <string name="right_most_ptr">آخری پوائنٹر: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">"ہیکس" دیکھیں</string>
+    <string name="dec_view">"نمبر" دیکھیں</string>
+    <string name="txt_view">متن کے طور پر دیکھیں</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Korean -->
+
     <!-- Header -->
     <string name="app_name">Sqlite 페이지 브라우저</string>
     <string name="open_db">데이터베이스 열기</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">다음 페이지</string>
     <string name="invalid">무효</string>
     <string name="right_most_ptr">가장 오른쪽 포인터 : </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">16 진수로 표시</string>
+    <string name="dec_view">10 진수로 표시</string>
+    <string name="txt_view">텍스트로 표시</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

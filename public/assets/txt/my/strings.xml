@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Myanmar (Burmese) -->
+
     <!-- Header -->
     <string name="app_name">Sqlite စာမျက်နှာ Explorer ကို</string>
     <string name="open_db">ပွင့်လင်းဒေတာဘေ့စ</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Next ကို 's Page</string>
     <string name="invalid">မှားနေသော</string>
     <string name="right_most_ptr">ညာဘက်အများဆုံး pointer: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Hexadecimal အဖြစ်ကြည့်ရန်</string>
+    <string name="dec_view">decimal အဖြစ်ကြည့်ရန်</string>
+    <string name="txt_view">စာသားအဖြစ်ကြည့်ရန်</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

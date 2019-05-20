@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Malay -->
+
     <!-- Header -->
     <string name="app_name">Penyemak Imbas Halaman Sqlite</string>
     <string name="open_db">Buka pangkalan data</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Muka surat seterusnya</string>
     <string name="invalid">Tidak sah</string>
     <string name="right_most_ptr">Penunjuk kanan: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Lihat sebagai Hexadecimal</string>
+    <string name="dec_view">Lihat sebagai Decimal</string>
+    <string name="txt_view">Lihat sebagai Teks</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

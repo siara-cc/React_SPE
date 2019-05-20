@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { twoBytesToInt } from './AppFunctions'
 import { getVarInt } from './AppFunctions'
 import { hexFromByte } from './AppFunctions'
+import cr_res from 'cr_addon_resources';
 import './w3.css';
 import './ByteView.css';
 
@@ -14,25 +15,25 @@ class ByteView extends PureComponent {
   }  
   render() {
     return (
-      <div style={{height:'35%', maxHeight:'35%', width:'100%'}}>
+      <div style={{height:'30%', maxHeight:'30%', width:'100%'}}>
         <div className="w3-row" style={{height:'100%', width:'100%'}}>
           <div className="w3-col m3 w3-container container"
                  style={{minWidth:'37%', padding: '5px'}}>
-            <div className="watermark">Hex view</div>
+            <div className="watermark">{cr_res.getString("hex_view")}</div>
             <div className="hexArea" id="hexArea1" onScroll={this.syncScroll}>
               <BytesDisplay parentState={this.props.parentState} mode="hex"/>
             </div>
           </div>
           <div className="w3-col m4 w3-container container"
                  style={{minWidth:'44%', padding: '5px'}}>
-            <div className="watermark">Decimal view</div>
+            <div className="watermark">{cr_res.getString("dec_view")}</div>
             <div className="hexArea" id="hexArea2" onScroll={this.syncScroll}>
               <BytesDisplay parentState={this.props.parentState} mode="dec"/>
             </div>
           </div>
           <div className="w3-col m2 w3-container container"
                  style={{minWidth:'19%', padding: '5px'}}>
-            <div className="watermark">Text view</div>
+            <div className="watermark">{cr_res.getString("txt_view")}</div>
             <div className="hexArea" id="hexArea3" onScroll={this.syncScroll}>
               <BytesDisplay parentState={this.props.parentState} mode="txt"/>
             </div>

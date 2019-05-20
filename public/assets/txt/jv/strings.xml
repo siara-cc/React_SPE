@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Javanese -->
+
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
     <string name="open_db">Bukak basis data</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Sabanjure Kaca</string>
     <string name="invalid">Ora bener</string>
     <string name="right_most_ptr">Paling pointer tengen: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Tampilan minangka heksadesimal</string>
+    <string name="dec_view">Tampilan minangka desimal</string>
+    <string name="txt_view">Tampilan minangka teks</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

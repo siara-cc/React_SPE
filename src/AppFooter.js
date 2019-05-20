@@ -12,7 +12,7 @@ class AppFooter extends PureComponent {
   }
   handleClick = (event) => {
     event.preventDefault();
-    openPage('', event.target.parentElement.children[1].value, 'u', false);
+    //openPage('', event.target.parentElement.children[1].value, 'u', false);
   }
   render() {
     return (

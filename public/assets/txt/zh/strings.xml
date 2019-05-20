@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Simplified Chinese -->
+
     <!-- Header -->
     <string name="app_name">Sqlite页面浏览器</string>
     <string name="open_db">打开数据库</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">下一页</string>
     <string name="invalid">无效</string>
     <string name="right_most_ptr">最后一个指针: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">以十六进制显示</string>
+    <string name="dec_view">查看为十进制</string>
+    <string name="txt_view">查看为文本</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

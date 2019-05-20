@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Arabic -->
+
     <!-- Header -->
     <string name="app_name">سكليتي الصفحة اكسبلورر</string>
     <string name="open_db">فتح قاعدة البيانات</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">الصفحة التالية</string>
     <string name="invalid">غير صالحة</string>
     <string name="right_most_ptr">مؤشر أقصى اليمين: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">عرض سداسي عشري</string>
+    <string name="dec_view">عرض كـ عشري</string>
+    <string name="txt_view">عرض كنص</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

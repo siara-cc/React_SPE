@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Hindi -->
+
     <!-- Header -->
     <string name="app_name">Sqlite पेज एक्सप्लोरर</string>
     <string name="open_db">डेटाबेस खोलें</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">अगला पृष्ठ</string>
     <string name="invalid">अमान्य</string>
     <string name="right_most_ptr">सबसे अधिक पॉइंटर: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">हेक्साडेसिमल के रूप में देखें</string>
+    <string name="dec_view">दशमलव के रूप में देखें</string>
+    <string name="txt_view">टेक्स्ट् के रूप में देखें</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

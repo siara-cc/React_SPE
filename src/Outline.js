@@ -14,7 +14,7 @@ class Outline extends PureComponent {
   render() {
     return (
         <div className="w3-row outln">
-            <div className="w3-col m2 w3-container container outlineArea"
+            <div className="w3-col m2 w3-container container"
                    id="mainOutline" style={{minWidth:'35%', padding: '5px'}}>
               <div className="watermark">{cr_res.getString("page_outline")}</div>
               <PageList parentState={this.props.parentState} 
@@ -37,7 +37,7 @@ class Outline extends PureComponent {
 class PageList extends React.PureComponent {
   render() {
     return (
-      <ul>
+      <ul class="outlineArea" id="mainOutline">
         {this.props.pageList.map(pageItem => (
           <li id={pageItem.pageId} attrPageNo={pageItem.pageNo}
             attrStart={pageItem.start} attrTypName={pageItem.typName}

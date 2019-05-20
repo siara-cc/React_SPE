@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Japanese -->
+
     <!-- Header -->
     <string name="app_name">Sqliteページエクスプローラ</string>
     <string name="open_db">データベースを開く</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">次のページ</string>
     <string name="invalid">無効</string>
     <string name="right_most_ptr">一番右のポインタ： </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">16進数として表示</string>
+    <string name="dec_view">10進数として表示</string>
+    <string name="txt_view">テキストとして表示</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

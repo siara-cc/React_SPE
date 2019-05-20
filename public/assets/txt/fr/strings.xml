@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- French -->
+
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
     <string name="open_db">Ouvrir la base de données</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Page suivante</string>
     <string name="invalid">Invalide</string>
     <string name="right_most_ptr">Pointer le plus à droite: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Afficher en hexadécimal</string>
+    <string name="dec_view">Afficher en décimal</string>
+    <string name="txt_view">Afficher en texte</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

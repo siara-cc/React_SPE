@@ -64,6 +64,11 @@
     <string name="invalid">Invalid</string>
     <string name="right_most_ptr">Right most pointer: </string>
 
+    <!-- Byte views -->
+    <string name="hex_view">Hex view</string>
+    <string name="dec_view">Decimal view</string>
+    <string name="txt_view">Text view</string>
+
     <!-- Footer -->
     <string name="db">DB: </string>
     <string name="not_opened">Not opened yet</string>

@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Filipino -->
+
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
     <string name="open_db">Buksan ang db</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Susunod na pahina</string>
     <string name="invalid">Di-wasto</string>
     <string name="right_most_ptr">Karapatan pinaka pointer: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Tingnan bilang Hexadecimal</string>
+    <string name="dec_view">Tingnan bilang Decimal</string>
+    <string name="txt_view">Tingnan bilang Teksto</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

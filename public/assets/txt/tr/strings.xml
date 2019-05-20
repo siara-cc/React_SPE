@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Turkish -->
+
     <!-- Header -->
     <string name="app_name">Sqlite Sayfa Gezgini</string>
     <string name="open_db">Veritabanını aç</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Sonraki Sayfa</string>
     <string name="invalid">Geçersiz</string>
     <string name="right_most_ptr">En işaretçi: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Onaltılık Olarak Görüntüle</string>
+    <string name="dec_view">Ondalık Olarak Görüntüle</string>
+    <string name="txt_view">Metin olarak görüntüle</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

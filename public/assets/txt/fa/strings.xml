@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Persian -->
+
     <!-- Header -->
     <string name="app_name">Sqlite صفحه اکسپلورر</string>
     <string name="open_db">پایگاه داده باز</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">صفحه بعد</string>
     <string name="invalid">بی اعتبار</string>
     <string name="right_most_ptr">راست ترین اشارهگر: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">هگزادسیمال را مشاهده کنید</string>
+    <string name="dec_view">نمایش به صورت دهدهی</string>
+    <string name="txt_view">مشاهده به عنوان متن</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Vietnamese -->
+
     <!-- Header -->
     <string name="app_name">Người thám hiểm trang sách Sqlite</string>
     <string name="open_db">Mở cơ sở dữ liệu</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Trang tiếp theo</string>
     <string name="invalid">không hợp lệ</string>
     <string name="right_most_ptr">Con trỏ cuối cùng: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Xem Hex</string>
+    <string name="dec_view">Xem số thập phân</string>
+    <string name="txt_view">Xem như là văn bản</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

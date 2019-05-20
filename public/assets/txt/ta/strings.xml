@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Tamil -->
+
     <!-- Header -->
     <string name="app_name">Sqlite பக்க உலாவி</string>
     <string name="open_db">DB திறக்க</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">அடுத்த பக்கம்</string>
     <string name="invalid">செல்லாது</string>
     <string name="right_most_ptr">வலது குறியீடு: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">ஹெக்டேடைசிமல்</string>
+    <string name="dec_view">தசமமாக பார்க்க</string>
+    <string name="txt_view">உரை</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

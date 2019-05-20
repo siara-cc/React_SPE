@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Russian -->
+
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
     <string name="open_db">Открытая база данных</string>
@@ -63,6 +65,11 @@
     <string name="nxt_pg">Следующая Страница</string>
     <string name="invalid">Недействительным</string>
     <string name="right_most_ptr">Самый правый указатель: </string>
+
+    <!-- Byte views -->
+    <string name="hex_view">Просмотреть как шестнадцатеричный</string>
+    <string name="dec_view">Просмотреть как десятичное</string>
+    <string name="txt_view">Просмотреть как текст</string>
 
     <!-- Footer -->
     <string name="db">DB: </string>

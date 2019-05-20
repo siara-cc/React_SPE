@@ -132,7 +132,7 @@ export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot,
       var pageId = (isRoot ? "p" + parentPageId.substring(1) : parentPageId) + '_' + typ + pageNo;
       if (document.getElementById(pageId) === null) {
         pageItem = { pageId: pageId, typName: typName, typDesc: typDesc, pageNo: pageNo, start: 0, pageList: [] }
-        addPageItem(pageItem, parentPageId);
+        addPageItem(pageItem, isRoot ? "" : parentPageId);
         //$('#' + parentPageId).children("ul").append('<li id="' + pageId
         //  + '" onclick="show' + typName + 'Page(this, event, 0)">' + typName  + ' ' + typDesc + ' ' + pageNo 
         //  + '<input type="hidden" value="' + pageNo + '"/><ul></ul></li>');
@@ -176,7 +176,7 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     newState.lang = state.lang;
     newState.pageList = [];
     newState.pageCount = 2;
-    newState.pageList[0] = { pageId: 'h0', typName: 'Header', typDesc: 'Header', pageNo: 1, start: 0, pageList: [] }
+    newState.pageList[0] = { pageId: 'h0', typName: 'Header', typDesc: '', pageNo: 1, start: 0, pageList: [] }
     newState.dbInfo.pageSize = bytesToInt(buffer[16], buffer[17]);
     if (newState.dbInfo.pageSize === 1)
       newState.dbInfo.pageSize = 65536;

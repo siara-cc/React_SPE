@@ -12,7 +12,9 @@ class AppFooter extends PureComponent {
   }
   handleClick = (event) => {
     event.preventDefault();
-    //openPage('', event.target.parentElement.children[1].value, 'u', false);
+    openPage(this.props.parentState.dbInfo.myBinaryFileFD,
+      "", event.target.parentElement.children[0].value, 'u', 
+      false, this.props.parentState, this.props.addPageItem);
   }
   render() {
     return (
@@ -22,15 +24,15 @@ class AppFooter extends PureComponent {
             <input type="text" size="5" defaultValue="2" onKeyPress={this.isNumberKey}
               style={{textAlign: 'right'}}/>&nbsp;
             <button className="w3-bar-item w3-button w3-small w3-green" onClick={this.handleClick}>{cr_res.getString("open")}</button>
-            &nbsp;&nbsp; {cr_res.getString("db")}<span id="dbName">&nbsp;<em>{cr_res.getString("not_opened")}</em></span>
+            &nbsp;&nbsp; {cr_res.getString("db")}&nbsp;<span id="dbName"><em>{cr_res.getString("not_opened")}</em></span>
         </div>
         <div className="w3-row dbname" style={{width:'100%', padding: '5px', verticalAlign: 'center'}}>
           <div className="w3-col m7 w3-container" style={{height:'100%'}}>
-            <a className="w3-hover-green" href="https://www.sqlite.org/fileformat.html">&lt;{cr_res.getString("ref")}&gt;</a>
+            <a className="w3-hover-green" href="https://www.sqlite.org/fileformat.html">{cr_res.getString("ref")}</a>
             &nbsp;| &nbsp;
             <a className="w3-hover-green" href="https://github.com/siara-cc">&copy;&nbsp;<nobr>Siara Logics (cc) 2015-19</nobr></a>
             &nbsp;| &nbsp;
-            <a className="w3-hover-green" href="https://github.com/siara-cc/sqlite3_page_explorer">GitHub</a>
+            <a className="w3-hover-green" href="https://github.com/siara-cc/sqlite3_page_explorer">Git</a>
             &nbsp;| &nbsp;
             <a className="w3-hover-green" href="http://htmlpreview.github.com/?https://github.com/siara-cc/sqlite3_page_explorer/blob/master/eula.htm">{cr_res.getString("license")}</a>
             &nbsp;| &nbsp;

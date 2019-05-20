@@ -6,13 +6,6 @@ body {
   overflow: scroll;
   font-family: Verdana, Geneva, sans-serif
 }
-ul {
-  margin: 3px;
-  padding-left: 20px
-}
-li {
-  cursor: pointer
-}
 a {
   /*font-family: Arial Narrow, Arial, sans-serif;*/
   text-decoration: none

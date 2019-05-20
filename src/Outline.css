@@ -15,5 +15,23 @@
   border: 1px solid #0F0F0F
 }
 .outln {
-  height:40%; max-height:40%; width:100%
+  height:40%; max-height:40%; width:100%;
+  text-decoration: none;
+}
+ul {
+  margin: 3px;
+  padding-left: 20px;
+  border: 0px
+}
+li {
+  cursor: pointer;
+  text-decoration: none;
+  border: 0px
+}
+lilink {
+  text-decoration: none;
+  cursor: pointer;
+}
+lilink hover {
+  color: #00f;
 }

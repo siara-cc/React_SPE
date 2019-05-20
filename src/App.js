@@ -59,19 +59,21 @@ class App extends PureComponent {
     for (var i = 0; i < pageList.length; i++) {
       if (pageList[i].pageId === parentPageId)
         return pageList[i];
-      var pageItem = this.locateParentPageItem(pageList[i].pageList);
-      if (pageItem != null)
+      var pageItem = this.locateParentPageItem(pageList[i].pageList, parentPageId);
+      if (pageItem !== null)
         return pageItem;
     }
     return null;
   }  
   addPageItem(pageItem, parentPageId) {
     var parentPageItem = null;
-    if (parentPageId !== "")
+    if (parentPageId !== "") {
       parentPageItem = this.locateParentPageItem(this.state.pageList, parentPageId);
-    if (parentPageItem === null)
-      parentPageItem = this.state.pageList[this.state.pageList.length - 1];
-    parentPageItem.pageList[parentPageItem.pageList.length] = pageItem;
+      if (parentPageItem === null)
+        parentPageItem = this.state.pageList[this.state.pageList.length - 1];
+        parentPageItem.pageList[parentPageItem.pageList.length] = pageItem;
+    } else
+      this.state.pageList[this.state.pageList.length] = pageItem;
     var newState = { pageCount: this.state.pageCount + 1,
       pageList: this.state.pageList,
       dbInfo: this.state.dbInfo,
@@ -89,7 +91,8 @@ class App extends PureComponent {
         <Outline parentState={this.state} setPageContent={this.setPageContent} 
                   addPageItem={this.addPageItem}/>
         <ByteView parentState={this.state} />
-        <AppFooter setLang={this.setLang} lang={this.state.lang} />
+        <AppFooter setLang={this.setLang} lang={this.state.lang} 
+          parentState={this.state} addPageItem={this.addPageItem}/>
       </div>
     );
   }

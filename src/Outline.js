@@ -19,7 +19,7 @@ class Outline extends PureComponent {
               <div className="watermark">{cr_res.getString("page_outline")}</div>
               <PageList parentState={this.props.parentState} 
                 pageList={this.props.parentState.pageList} 
-                setPageContent={this.props.setPageContent} />
+                setPageContent={this.props.setPageContent} ulClass="outlineArea"/>
             </div>
             <div className="w3-col m2 w3-container container"
                    style={{minWidth:'65%', padding: '5px'}}>
@@ -37,9 +37,9 @@ class Outline extends PureComponent {
 class PageList extends React.PureComponent {
   render() {
     return (
-      <ul class="outlineArea" id="mainOutline">
+      <ul className={this.props.ulClass} id="mainOutline">
         {this.props.pageList.map(pageItem => (
-          <li id={pageItem.pageId} attrPageNo={pageItem.pageNo}
+          <li id={pageItem.pageId} className="lilink" attrPageNo={pageItem.pageNo}
             attrStart={pageItem.start} attrTypName={pageItem.typName}
             onClick={(event) => { 
               var pc = readPage(this.props.parentState.dbInfo.myBinaryFileFD,
@@ -53,7 +53,7 @@ class PageList extends React.PureComponent {
               {pageItem.typName} {pageItem.typDesc}
               <PageList parentState={this.props.parentState} 
                 pageList={pageItem.pageList} 
-                setPageContent={this.props.setPageContent} />
+                setPageContent={this.props.setPageContent} ulClass=""/>
           </li>
         ))}
       </ul>
@@ -100,7 +100,7 @@ class HeaderDetail extends PureComponent {
     this.props.parentState.dbInfo.txtEncoding = txtEncoding;
     var button = ""
     if (flCount > 0) {
-      button = <input type="button" value={cr_res.getString("Open")}
+      button = <input type="button" value={cr_res.getString("open")}
                  onClick={this.openFLPage.bind(this, firstFLTrunk, (flCount === 1 ? "fl" : "ft"))} />
     }
     return (<div>
@@ -186,7 +186,8 @@ class FreeLeafDetail extends PureComponent {
     var pageContent = this.props.parentState.pageContent;
     var ptype = pageContent[0];
     if (ptype === 2 || ptype === 5 || ptype === 10 || ptype === 13) {
-      var pageNo = 0; // TODO
+      var liEle = document.getElementById(this.props.parentState.pageId);
+      var pageNo = liEle.getAttribute("attrPageNo");
       return (<input type="button" value={cr_res.getString("show_as_bt_pg")} 
                 onClick={this.openBTPage.bind(this, pageNo, "b")} />)
     }
@@ -220,9 +221,9 @@ class BTreeDetail extends PureComponent {
     this.formColDataHtml = this.formColDataHtml.bind(this);
     this.openBTPage = this.openBTPage.bind(this);
   }
-  openBTPage(pageNo, type, parentPageId) {
+  openBTPage(pageNo, type, parentPageId, isRoot) {
     openPage(this.props.parentState.dbInfo.myBinaryFileFD,
-      parentPageId, pageNo, type, false, this.props.parentState, this.props.addPageItem);
+      parentPageId, pageNo, type, isRoot, this.props.parentState, this.props.addPageItem);
   }
   formColDataHtml(arr, cellPtr, pageId, dbInfo) {
     var hdr = [];
@@ -282,7 +283,7 @@ class BTreeDetail extends PureComponent {
       }
       if (pageId.substr(0, 2) === 'r0' && colIdx === 3) {
         det.push(<td>{colValue} <input type="button" value={cr_res.getString("open")}
-                  onClick={this.openBTPage.bind(this, colValue, "b", "r0")} /></td>)
+                  onClick={this.openBTPage.bind(this, colValue, "b", "r0", true)} /></td>)
       } else
         det.push(<td>{colValue}</td>)
       i += colInfo[1];
@@ -321,7 +322,7 @@ class BTreeDetail extends PureComponent {
     if (ptype === 2 || ptype === 5) {
       var rightPtr = fourBytesToInt(pageContent, parentState.start + 8);
       rightPtrHTML = <span><br/>{cr_res.getString("right_most_ptr")}<b>{rightPtr}</b>
-      <input type='button' value={cr_res.getString("open")} onclick='openPage(\"{pageId}\",{rightPtr}, \"b\", false)'/></span>
+      <input type='button' value={cr_res.getString("open")} onClick={this.openBTPage.bind(this, rightPtr, "b", pageId, false)}/></span>
       hdrSize = 12;
     }
     var hdr = ""
@@ -332,7 +333,7 @@ class BTreeDetail extends PureComponent {
       if (ptype === 2 || ptype === 5) {
         var pNo = fourBytesToInt(pageContent, cellPtr);
         cellContent.push(<td><input type="button" value={cr_res.getString("page") + pNo} 
-          onClick={this.openBTPage.bind(this, pNo, "b", pageId)} /></td>)
+          onClick={this.openBTPage.bind(this, pNo, "b", pageId, false)} /></td>)
         cellPtr += 4;
       }
       var vInt = getVarInt(pageContent, cellPtr);
@@ -398,7 +399,7 @@ class BTreeDetail extends PureComponent {
         cellContent.push(hdrDtl[1]);
         if (pageNo) {
           cellContent.push(<td><input type="button" value={cr_res.getString("page") + pageNo} 
-                             onClick={this.openBTPage.bind(this, pageNo, "o", pageId)} /></td>)
+                             onClick={this.openBTPage.bind(this, pageNo, "o", pageId, false)} /></td>)
         } else
           cellContent.push(<td>-</td>)
       }

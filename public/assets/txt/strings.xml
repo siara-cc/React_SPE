@@ -2,7 +2,7 @@
 
     <!-- Header -->
     <string name="app_name">Sqlite Page Explorer</string>
-    <string name="open_db">Open database</string>
+    <string name="open_db">Open DB</string>
 
     <!-- Functions -->
     <string name="file_not_open">File not open</string>

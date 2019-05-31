@@ -71,7 +71,7 @@ export function toHexString(buf) {
 }
 
 export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
-  if (!myBinaryFileFD) {
+  if (myBinaryFileFD === -1) {
     cr_basic.lingeringMessage(cr_res.getString("file_not_open"));
     return;
   }
@@ -85,7 +85,7 @@ export function readPage(myBinaryFileFD, pageSize, pageNo, len) {
 
 export function openPage(myBinaryFileFD, parentPageId, pageNo, typ, isRoot, 
                            parentState, addPageItem) {
-  if (!myBinaryFileFD) {
+  if (myBinaryFileFD === -1) {
     cr_basic.lingeringMessage(cr_res.getString("file_not_open"));
     return;
   }
@@ -148,9 +148,9 @@ export function fileSelected(fileName, state, setStateOnOpen) {
   if (fileName === undefined) {
     cr_basic.lingeringMessage(cr_res.getString("no_file"));
   } else {
-    if (state.dbInfo.myBinaryFileFD !== 0) {
+    if (state.dbInfo.myBinaryFileFD !== -1) {
         cr_fs.close(state.dbInfo.myBinaryFileFD);
-        state.dbInfo.myBinaryFileFD = 0;
+        state.dbInfo.myBinaryFileFD = -1;
     }
     var newState = {}
     newState.dbInfo = {}
@@ -190,6 +190,12 @@ export function fileSelected(fileName, state, setStateOnOpen) {
     cr_basic.lingeringMessage(cr_res.getString("db_loaded"));
     setStateOnOpen(newState);
   }
+}
+
+window.selectSqliteDBFile = function(filename) {
+  if (filename.startsWith("file://"))
+    filename = filename.substring(7)
+  fileSelected(filename, window.reactAppInstance.state, window.reactAppInstance.setStateOnOpen)
 }
 
 export function selectFile(state, setStateOnOpen) {

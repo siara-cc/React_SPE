@@ -1,16 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import AppHeader from './AppHeader';
 import Outline from './Outline';
 import ByteView from './ByteView';
 import AppFooter from './AppFooter';
+import cr_basic from 'cr_addon_basic';
 import './App.css';
 
-class App extends PureComponent {
+class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { pageCount: 0,
+    var initialState = { pageCount: 0,
       pageList: [],
-      dbInfo: {myBinaryFileFD: 0,
+      dbInfo: {myBinaryFileFD: -1,
         pageSize: 0, usableSize: 0, 
         maxLocal: 0, minLocal: 0,
         maxLeaf: 0, minLeaf: 0,
@@ -22,11 +23,24 @@ class App extends PureComponent {
       pageContent: [],
       lang: ""
     };
+    var storedState = cr_basic.getState();
+    if (storedState && storedState !== "") {
+      try {
+        this.state = JSON.parse(storedState.state)
+      } catch (e) {
+        this.state = initialState
+      }
+    } else {
+      this.state = initialState
+    }
     this.setStateOnOpen = this.setStateOnOpen.bind(this)
     this.setPageContent = this.setPageContent.bind(this)
     this.addPageItem = this.addPageItem.bind(this)
     this.locateParentPageItem = this.locateParentPageItem.bind(this)
     this.setLang = this.setLang.bind(this)
+  }
+  componentDidUpdate() {
+    cr_basic.setState(JSON.stringify(this.state))
   }
   setStateOnOpen(st) {
     this.setState(st);

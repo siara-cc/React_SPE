@@ -21,9 +21,9 @@ a {
   left: 0;
   right: 0;
   width: 75%;
-  height: 40%;
+  height: 30%;
   margin: auto;
-  font-size: 24px;
+  font-size: 18px;
   font-family: Verdana, Geneva, sans-serif;
   color: lavender;
   text-align: center;
@@ -32,11 +32,11 @@ a {
 }
 @media screen and (min-width: 601px) {
   .hdr {
-    font-size: 30px;
+    font-size: 24px;
   }
 }
 @media screen and (max-width: 600px) {
   .hdr {
-    font-size: 25px;
+    font-size: 22px;
   }
 }

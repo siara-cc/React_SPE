@@ -25,14 +25,14 @@ class ByteView extends PureComponent {
             </div>
           </div>
           <div className="w3-col m4 w3-container container"
-                 style={{minWidth:'44%', padding: '5px'}}>
+                 style={{minWidth:'46%', padding: '5px'}}>
             <div className="watermark">{cr_res.getString("dec_view")}</div>
             <div className="hexArea" id="hexArea2" onScroll={this.syncScroll}>
               <BytesDisplay parentState={this.props.parentState} mode="dec"/>
             </div>
           </div>
           <div className="w3-col m2 w3-container container"
-                 style={{minWidth:'19%', padding: '5px'}}>
+                 style={{minWidth:'15%', padding: '5px'}}>
             <div className="watermark">{cr_res.getString("txt_view")}</div>
             <div className="hexArea" id="hexArea3" onScroll={this.syncScroll}>
               <BytesDisplay parentState={this.props.parentState} mode="txt"/>

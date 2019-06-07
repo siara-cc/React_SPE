@@ -2,12 +2,11 @@
   position: relative;
   height: 95%;
   padding: 3px;
-  white-space: pre;
   text-overflow: clip;
   overflow: auto;
   border: 1px solid #0F0F0F;
   color: #0F0F0F;
-  font-family: "Courier New", Courier, monospace
+  font-family: "Lucida Console", "Courier New", Courier, monospace;
 }
 .bh {
   background: lightskyblue;

@@ -12,6 +12,7 @@
     "cr_addon_system_menu": "file:../../Addons/System_Menu/npm_module",
     "jquery": "^3.4.0",
     "react": "^16.7.0",
+    "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"
   },

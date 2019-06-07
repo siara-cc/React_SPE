@@ -226,7 +226,7 @@ class BTreeDetail extends PureComponent {
       parentPageId, pageNo, type, isRoot, this.props.parentState, this.props.addPageItem);
   }
   formColDataHtml(arr, cellPtr, pageId, dbInfo) {
-    arr = Buffer.from(arr)
+    //arr = Buffer.from(arr)
     var hdr = [];
     var det = [];
     var hdrInfo = getVarInt(arr, cellPtr);
@@ -274,8 +274,14 @@ class BTreeDetail extends PureComponent {
           dataLen = Math.floor(dataLen);
           if (colInfo[0] % 2) {
             hdr.push(<td>text</td>);
-            var dec = new TextDecoder(dbInfo.txtEncoding);
-            colValue = dec.decode(arr.slice(dataPtr, dataPtr + dataLen))
+            try {
+               var dec = new TextDecoder(dbInfo.txtEncoding);
+               colValue = dec.decode(Buffer.from(arr.slice(dataPtr, dataPtr + dataLen)))
+            } catch (e) {
+              colValue = ""
+              for (var j = dataPtr; j < dataPtr + dataLen; j++)
+                 colValue += String.fromCharCode(arr[j]);
+            }
           } else {
             hdr.push(<td>blob</td>)
             colValue = toHexString(arr.slice(dataPtr, dataLen))

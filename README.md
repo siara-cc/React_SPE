@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sqlite3 Page Explorer
 
-## Available Scripts
+This application lets the user open Sqlite databases and explore the internal organization of various objects such as schema, tables and indices.  To understand how Sqlite3 data is organized, please see [Database file format](https://www.sqlite.org/fileformat.html) from [Sqlite website](https://www.sqlite.org).
 
-In the project directory, you can run:
+# About Sqlite (from their website)
 
-### `npm start`
+SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine. SQLite is the most used database engine in the world.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+SQLite is an embedded SQL database engine. Unlike most other SQL databases, SQLite does not have a separate server process. SQLite reads and writes directly to ordinary disk files. A complete SQL database with multiple tables, indices, triggers, and views, is contained in a single disk file. The database file format is cross-platform - you can freely copy a database between 32-bit and 64-bit systems or between big-endian and little-endian architectures. These features make SQLite a popular choice as an Application File Format. SQLite database files are a recommended storage format by the US Library of Congress.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# Installation
 
-### `npm test`
+It is available in App stores for various platforms:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [MacOS](https://itunes.apple.com/us/app/sqlite-page-explorer/id1444019689)
+- [iPhone/iPad](https://itunes.apple.com/us/app/sqlite-page-explorer/id1466475834)
+- [Android](https://play.google.com/store/apps/details?id=cc.siara.xroads)
+- [Windows 10 UWP](https://www.microsoft.com/en-us/p/sqlite-page-explorer/9mtkt38glgc0)
+- For Linux, the package is available as a Zip archive in the release section. Please unzip into a folder and click on the executable with the `Database` icon.
 
-### `npm run build`
+# Applications:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Viewing internal organisation of Sqlite databases for software development, ethical hacking and troubleshooting
+- Studying the format of Sqlite databases for academic purposes
+- Forensic investigators may use it to view data from deleted pages
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+# Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Opening Sqlite databases, displaying first page (containing header and schema root)
+- Opening internal pages which may be a B-Tree page, Freelist page or Overflow page
+- Exploring root, internal and leaf pages of B-Tree pages hierarchically.
+- Parsing and displaying cell content for B-Tree pages
+- Exploring Freelist trunk and leaf pages
 
-### `npm run eject`
+# User guide
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+On clicking the `Open database` button, the user can select the database file to explore.  The application opens the header, finds out the page size and provides links for the user to expand the `Header` and `Page 1`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The first page invariably contains the header and the schema (definitions of tables and indices).  If the schema fits into the first page, the definitions can be seen on the `Page details` section in the form of table under `Cells` heading.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For exploring data of tables and indices, the `Open` button against each table/index under `Cells` section may be clicked. This opens the `root` page of the table or index. Further exploration can be carried out from there by clicking on buttons in the `Page details` sections.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If the schema spills over more than one page, the first page contains links to the different pages in which schema information is stored. These links can be seen in the `Page details` section under `Cells` heading and `Open` button against `Right most pointer` just above `Cells`.
 
-## Learn More
+For each page, the page content in bytes is shown in `Hex`, `Decimal` and `Text` representations.  It is also possible to open a random page from the database by entering page number and clicking on the `Open:` button at the bottom.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Screenshots
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![First page](scrshot0.png?raw=true)
 
-### Code Splitting
+![Schema page](scrshot1.png?raw=true)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![Table root page](scrshot2.png?raw=true)
 
-### Analyzing the Bundle Size
+# Support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you face any problem, create issue in this website, or write to the author (Arundale Ramanathan) at arun@siara.cc.
